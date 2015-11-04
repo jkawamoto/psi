@@ -17,7 +17,7 @@ $ docker build -t jkawamoto/rpi-node-red rpi-node-red
 $ docker build -t jkawamoto/rpi-node-red2 -f rpi-node-red/Dockerfile.ctm rpi-node-red
 ```
 
-The image jkawamoto/rpi/node-red is a basic Node-RED image for Raspberry Pi. It is also available in DockerHub. So, you can just pull it by `docker pull jkawamoto/rpi-node-red` and skip first line.
+The image jkawamoto/rpi/node-red is a basic Node-RED image for Raspberry Pi. It is also available in DockerHub. So, you can just pull it by `docker pull jkawamoto/rpi-node-red` and skip the first line.
 
 
 Run

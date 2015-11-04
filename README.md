@@ -3,7 +3,8 @@
 
 Directories
 -------------
-  * compose: configurations for docker-compose
+  * [compose](./tree/master/compose): configurations for docker-compose
+  * [dockerfile](./tree/master/dockerfile): dockerfiles for Node-RED images.
 
 
 Submodules
