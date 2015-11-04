@@ -1,0 +1,37 @@
+ambassadors_client:
+  image: jkawamoto/rpi-ambassadors
+  command: client
+  links:
+    - ambassadors_tunnel:tunnel
+  expose:
+    - "1880"
+  environment:
+    PORT: "1880"
+
+ambassadors_tunnel:
+  image: jkawamoto/rpi-ambassadors
+  command: tunnel
+  volumes:
+    - /var/ambassadors/id_rsa:/root/.ssh/id_rsa
+  env_file: ambassadors.env
+
+node-red:
+  image: jkawamoto/rpi-node-red2
+  volumes:
+    - /var/node-red:/root/.node-red
+  links:
+    - ambassadors_client:upstream
+  ports:
+    - "127.0.0.1:1880:1880"
+  environment:
+    HOSTNAME: raspberry
+
+nginx:
+  image: lalyos/rpi-nginx
+  volumes:
+    - /var/nginx/sites-enabled/:/etc/nginx/sites-enabled/:ro
+    - /var/nginx/.htpasswd:/etc/nginx/.htpasswd:ro
+  ports:
+    - "80:80"
+  links:
+    - node-red

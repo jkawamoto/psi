@@ -1,6 +1,10 @@
 &#x03C8;: A Privacy-Preserving Stream Integration
 ==================================================
 
+Directories
+-------------
+  * compose: configurations for docker-compose
+
 
 Submodules
 ------------

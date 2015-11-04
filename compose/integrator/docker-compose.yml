@@ -1,0 +1,33 @@
+mongo:
+  image: mongo
+  volumes:
+    - /var/mongo:/data/db
+
+node-red:
+  image: jkawamoto/node-red
+  volumes:
+    - /var/node-red:/root/.node-red
+  links:
+    - mongo
+  environment:
+    HOSTNAME: integrator
+
+ambassadors:
+  image: jkawamoto/ambassadors
+  command: server
+  volumes:
+    - /var/compose/authorized_keys:/data/authorized_keys
+  ports:
+    - "8022:22"
+  links:
+    - node-red
+
+nginx:
+  image: nginx
+  ports:
+    - "80:80"
+  links:
+    - node-red
+  volumes:
+    - /var/nginx/sites-enabled/:/etc/nginx/conf.d/:ro
+    - /var/nginx/.htpasswd:/etc/nginx/.htpasswd:ro
