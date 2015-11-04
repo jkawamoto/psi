@@ -16,3 +16,7 @@ Docker Images for Raspberry Pi
 --------------------------------
   * [Node-RED](https://hub.docker.com/r/jkawamoto/rpi-node-red/)
   * [AmbassadorS](https://hub.docker.com/r/jkawamoto/rpi-ambassadors/)
+
+License
+--------
+ * GNU General Public License v3.0
