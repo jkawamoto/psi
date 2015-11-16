@@ -3,7 +3,7 @@
 
 Directories
 -------------
-  * coffee: coffee scripts used in Node-RED.
+  * [coffee](./coffee/README.md): coffee scripts used in Node-RED.
   * [compose](./compose/README.md): configurations for docker-compose
   * [dockerfile](./dockerfile/README.md): dockerfiles for Node-RED images.
   * python: python scripts called from Node-RED.
