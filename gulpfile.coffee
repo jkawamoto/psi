@@ -3,7 +3,7 @@ coffee = require "gulp-coffee"
 del = require "del"
 
 conf =
-  src: 'src'
+  src: 'coffee'
   dest: 'dest'
 
 String::startsWith ?= (s) -> @[...s.length] is s
