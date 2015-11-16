@@ -1,0 +1,19 @@
+{
+  "name": "psi",
+  "version": "1.0.0",
+  "description": "Privacy-Preserving Stream Integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jkawamoto/psi.git"
+  },
+  "author": "Junpei Kawamoto <kawamoto.junpei@gmail.com>",
+  "license": "GPL v3.0.",
+  "bugs": {
+    "url": "https://github.com/jkawamoto/psi/issues"
+  },
+  "homepage": "https://github.com/jkawamoto/psi"
+}
