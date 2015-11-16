@@ -1,10 +1,12 @@
-&#x03C8;: A Privacy-Preserving Stream Integration
+&#x03C8;: Privacy-Preserving Stream Integration
 ==================================================
 
 Directories
 -------------
+  * coffee: coffee scripts used in Node-RED.
   * [compose](./compose/README.md): configurations for docker-compose
   * [dockerfile](./dockerfile/README.md): dockerfiles for Node-RED images.
+  * python: python scripts called from Node-RED.
 
 
 Submodules
