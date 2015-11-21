@@ -1,5 +1,7 @@
 &#x03C8;: Privacy-Preserving Stream Integration
 ==================================================
+[![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
+
 
 Directories
 -------------
