@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-fluentd-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NodeRED node for parsing logs from Fluentd.",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "homepage": "https://github.com/jkawamoto/psi/tree/master/node/fluentd-parser/",
@@ -19,6 +19,14 @@
   "scripts": {
     "compile": "gulp prod build"
   },
+  "files": [
+    "lib",
+    "src",
+    "gulpfile.coffee",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
   "license": "GPL-3.0",
   "devDependencies": {
     "coffee-script": "^1.10.0",
