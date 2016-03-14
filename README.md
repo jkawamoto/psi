@@ -2,12 +2,13 @@
 ==================================================
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 
+This project implements a privacy-preserving stream integration algorithm on [Node-RED](http://nodered.org/).
 
 Directories
 -------------
-  * [coffee](./coffee/README.md): coffee scripts used in Node-RED.
   * [compose](./compose/README.md): configurations for docker-compose
   * [dockerfile](./dockerfile/README.md): dockerfiles for Node-RED images.
+  * [node](./node/README.md): Node-RED nodes.
   * python: python scripts called from Node-RED.
 
 
