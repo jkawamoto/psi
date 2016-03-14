@@ -1,6 +1,9 @@
 FPlug Log splitter
 ===================
 
+[![npm version](https://badge.fury.io/js/node-red-contrib-fplug-splitter.svg)](https://badge.fury.io/js/node-red-contrib-fplug-splitter) [![license](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
+
+
 A NodeRED node of splitting FPlug log made by [fplug-logger](https://github.com/jkawamoto/fplug-logger).
 
 It assumes the payload of an input message consists of

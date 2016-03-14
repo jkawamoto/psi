@@ -1,6 +1,8 @@
 Fluentd parser
 =================
 
+[![npm version](https://badge.fury.io/js/node-red-contrib-fluentd-parser.svg)](https://badge.fury.io/js/node-red-contrib-fluentd-parser) [![license](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
+
 A Node-RED node to parse logs posted from [Fluentd](http://www.fluentd.org/).
 
 A payload of a message posted from Fluentd consists of log property.
