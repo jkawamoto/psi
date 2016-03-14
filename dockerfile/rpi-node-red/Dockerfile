@@ -1,7 +1,7 @@
 #
-# Dockerfile
+# Dockerfile.ctm
 #
-# Copyright (c) 2015 Junpei Kawamoto
+# Copyright (c) 2015-2016 Junpei Kawamoto
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,20 +15,27 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-FROM resin/rpi-raspbian:wheezy-2015-10-07
+FROM jkawamoto/rpi-node-red
 MAINTAINER Junpei Kawamoto <kawamoto.junpei@gmail.com>
 
-# Install node.js.
-RUN apt-get update && apt-get install -y curl && \
-    curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash - && \
-    apt-get install -y build-essential python-dev nodejs && \
+# Install python package.
+RUN apt-get update && apt-get install -y python-numpy && \
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/
 
-# Install node-ref
-RUN npm install -g --unsafe-perm node-red
+# Install node packages
+RUN npm install -g node-red-contrib-batcher node-red-contrib-fluentd-parser \
+                   node-red-contrib-fplug-splitter
+
+# Change the working directory.
+WORKDIR /root
+
+# Add scripts.
+ADD python .
 
 # Expose port
 EXPOSE 1880
+
+ADD local-sum/lib /usr/lib/node_modules/node-red/nodes
 
 # Startup configuration.
 CMD ["node-red-pi", "--max-old-space-size=128"]
