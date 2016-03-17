@@ -5,7 +5,7 @@
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:jkawamoto/paste.git"
+    "url": "https://github.com/jkawamoto/psi.git"
   },
   "keywords": [
     "node-red"

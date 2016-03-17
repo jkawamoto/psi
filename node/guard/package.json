@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:jkawamoto/paste.git"
+    "url": "https://github.com/jkawamoto/psi.git"
   },
   "node-red": {
     "nodes": {
