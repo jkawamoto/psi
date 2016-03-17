@@ -1,0 +1,58 @@
+//- 
+//- guard.jade
+//- 
+//- Copyright (c) 2016 Junpei Kawamoto
+//- 
+//- This program is free software: you can redistribute it and/or modify
+//- it under the terms of the GNU General Public License as published by
+//- the Free Software Foundation, either version 3 of the License, or
+//- (at your option) any later version.
+//- 
+//- This program is distributed in the hope that it will be useful,
+//- but WITHOUT ANY WARRANTY; without even the implied warranty of
+//- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//- GNU General Public License for more details.
+//- 
+//- You should have received a copy of the GNU General Public License
+//- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+script(type="text/javascript")
+  :coffee-script
+    RED.nodes.registerType "guard",
+      category: "function"
+      color: "#a6bbcf"
+      defaults: 
+        topic:
+          value: "new_topic"
+        ntopic:
+          value: "2"
+        name:
+          value: ""
+      inputs: 1
+      outputs: 1
+      icon: "arrow-in.png"
+      label: -> 
+        @name || "Guard"
+      labelStyle: ->
+        if @name then "node_label_italic" else ""
+    
+
+script(type="text/x-red", data-template-name="guard")
+  .form-row
+    label(for="node-input-topic")
+      <i class="fa fa-tasks"></i> New Topic
+    input#node-input-topic(type="text", placeholder="New topic name")
+  .form-row
+    label(for="node-input-ntopic")
+      <i class="fa fa-cogs"></i> Number of Topics
+    input#node-input-ntopic(type="text", placeholder="Number of topics")
+  .form-row
+    label(for="node-input-name")
+      <i class="icon-tag"></i> Name
+    input#node-input-name(type="text", placeholder="Name")
+
+
+script(type="text/x-red", data-help-name="guard")
+  :markdown
+    A Node-RED node which waits to send message until it receives messages from
+    all topics. If several topics are mixed in your flow and you want tuples which
+    consists of messages from each topic. This nodes provides such function.
