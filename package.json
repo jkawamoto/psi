@@ -8,6 +8,7 @@
         "doc": "doc"
     },
     "scripts": {
+        "preinstall": "gulp install && gulp build",
         "start": "node-red",
         "test": "node-red",
         "build": "gulp",

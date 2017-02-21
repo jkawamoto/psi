@@ -1,39 +1,40 @@
 {
-  "name": "node-red-contrib-fplug-splitter",
-  "version": "1.0.2",
-  "description": "NodeRED node to split flow from FPlug logger.",
-  "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
-  "homepage": "https://github.com/jkawamoto/psi/tree/master/node/fplug-splitter/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jkawamoto/psi.git"
-  },
-  "keywords": [
-    "node-red"
-  ],
-  "node-red": {
-    "nodes": {
-      "json-log-parser": "lib/fplug-splitter.js"
+    "name": "node-red-contrib-fplug-splitter",
+    "version": "1.0.2",
+    "description": "NodeRED node to split flow from FPlug logger.",
+    "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
+    "homepage": "https://github.com/jkawamoto/psi/tree/master/node/fplug-splitter/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jkawamoto/psi.git"
+    },
+    "keywords": [
+        "node-red"
+    ],
+    "node-red": {
+        "nodes": {
+            "json-log-parser": "lib/fplug-splitter.js"
+        }
+    },
+    "scripts": {
+        "build": "gulp prod build"
+    },
+    "files": [
+        "lib",
+        "src",
+        "gulpfile.coffee",
+        "LICENSE",
+        "package.json",
+        "README.md"
+    ],
+    "license": "GPL-3.0",
+    "devDependencies": {
+        "coffee-script": "^1.10.0",
+        "del": "^2.2.0",
+        "gulp": "^3.9.1",
+        "gulp-coffee": "^2.3.1",
+        "gulp-jade": "^1.1.0",
+        "gulp-uglify": "^1.5.3",
+        "jstransformer-markdown": "^1.1.0"
     }
-  },
-  "scripts": {
-    "compile": "gulp prod build"
-  },
-  "files": [
-    "lib",
-    "src",
-    "gulpfile.coffee",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ],
-  "license": "GPL-3.0",
-  "devDependencies": {
-    "coffee-script": "^1.10.0",
-    "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-coffee": "^2.3.1",
-    "gulp-jade": "^1.1.0",
-    "jstransformer-markdown": "^1.1.0"
-  }
 }

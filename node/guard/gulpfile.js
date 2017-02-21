@@ -63,4 +63,4 @@ gulp.task("views", ["clean"], () => {
 });
 
 // Set production mode.
-gulp.task("prod", () => conf.prod = true);;
+gulp.task("prod", () => conf.prod = true);
