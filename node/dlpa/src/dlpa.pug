@@ -1,0 +1,118 @@
+//-
+//- dlpa.pug
+//-
+//- Copyright (c) 2017 Junpei Kawamoto
+//-
+//- This program is free software: you can redistribute it and/or modify
+//- it under the terms of the GNU General Public License as published by
+//- the Free Software Foundation, either version 3 of the License, or
+//- (at your option) any later version.
+//-
+//- This program is distributed in the hope that it will be useful,
+//- but WITHOUT ANY WARRANTY; without even the implied warranty of
+//- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//- GNU General Public License for more details.
+//-
+//- You should have received a copy of the GNU General Public License
+//- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+//-
+//- DLPA Client Node.
+//-
+script(type="text/javascript")
+    :babel(presets=["es2015"])
+        // Config should have the IP and port of the DLPA-node server,
+        // client id, and epsilon.
+        RED.nodes.registerType("dlpa-client", {
+            category: "output",
+            color: "#a6bbcf",
+            defaults: {
+                name: { value: "" },
+                host: { value: "localhost" },
+                port: { value: "50051" },
+                client_id: { value: "0" },
+                epsilon: { value: "0" }
+            },
+            inputs: 1,
+            outputs: 0,
+            icon: "inject.png",
+            label() { return this.name || "DLPA Client" },
+            labelStyle() { return this.name ? "node_label_italic": "" }
+            });
+
+script(type="text/x-red", data-template-name="dlpa-client")
+    .form-row
+        label(for="node-input-name")
+            <i class="icon-tag"></i> Name
+        input#node-input-name(type="text", placeholder="Name")
+    .form-row
+        label(for="node-input-host") Host address
+        input#node-input-host(type="text", placeholder="IP address of the server")
+    .form-row
+        label(for="node-input-port") Port number
+        input#node-input-port(type="text", placeholder="Port number of the server")
+    .form-row
+        label(for="node-input-client_id") Client ID
+        input#node-input-client_id(type="text", placeholder="Client ID")
+    .form-row
+        label(for="node-input-epsilon") Epsilon
+        input#node-input-epsilon(type="text", placeholder="Security Parameter")
+
+script(type="text/x-red", data-help-name="dlpa-client")
+    :markdown-it
+        This node is a part of
+        [Privacy-Preserving Stream Integration](https://github.com/jkawamoto/psi)
+        project.
+
+//-
+//- DLPA Server Node.
+//-
+script(type="text/javascript")
+    :babel(presets=["es2015"])
+        // Config should have listening port, the number of clients, the number
+        // of rows and columns.
+        RED.nodes.registerType("dlpa-server", {
+            category: "input",
+            color: "#a6bbcf",
+            defaults: {
+                name: { value: "" },
+                topic: { value: "dlpa-result" },
+                port: { value: "50051" },
+                nclient: { value: "" },
+                rows: { value: "" },
+                columns: { value: "1" }
+            },
+            inputs: 0,
+            outputs: 1,
+            icon: "inject.png",
+            label() { return this.name || "DLPA Server" },
+            labelStyle() { return this.name ? "node_label_italic": "" }
+            });
+
+script(type="text/x-red", data-template-name="dlpa-server")
+    .form-row
+        label(for="node-input-name")
+            <i class="icon-tag"></i> Name
+        input#node-input-name(type="text", placeholder="Name")
+    .form-row
+        label(for="node-input-topic")
+            <i class="fa fa-tasks"></i> Topic
+        input#node-input-topic(type="text", placeholder="Topic")
+    .form-row
+        label(for="node-input-port") Listening port
+        input#node-input-port(type="text", placeholder="Listening port number")
+    .form-row
+        label(for="node-input-nclient") Clients
+        input#node-input-nclient(type="text", placeholder="Number of clients")
+    .form-row
+        label(for="node-input-rows") Rows
+        input#node-input-rows(type="text", placeholder="Number of rows")
+    .form-row
+        label(for="node-input-columns") Columns
+        input#node-input-columns(type="text", placeholder="Number of columns")
+
+script(type="text/x-red", data-help-name="dlpa-server")
+    :markdown-it
+        This node is a part of
+        [Privacy-Preserving Stream Integration](https://github.com/jkawamoto/psi)
+        project.
