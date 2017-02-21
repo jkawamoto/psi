@@ -1,15 +1,44 @@
 {
-  "name": "psi",
-  "version": "0.0.1",
-  "description": "Privacy-Preserving Stream Integration",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jkawamoto/psi.git"
-  },
-  "author": "Junpei Kawamoto <kawamoto.junpei@gmail.com>",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/jkawamoto/psi/issues"
-  },
-  "homepage": "https://github.com/jkawamoto/psi"
+    "name": "paste",
+    "version": "0.5.0",
+    "description": "Privacy-Preserving Stream Integration",
+    "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
+    "main": "index.js",
+    "directories": {
+        "doc": "doc"
+    },
+    "scripts": {
+        "start": "node-red",
+        "test": "node-red",
+        "build": "gulp",
+        "restart": "npm run build && npm start",
+        "gulp": "gulp",
+        "deps": "pip insrall -r requirements.txt",
+        "check-updates": "ncu -u"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jkawamoto/psi.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jkawamoto/psi/issues"
+    },
+    "homepage": "https://github.com/jkawamoto/psi",
+    "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-exec": "^2.1.3",
+        "gulp-util": "^3.0.8",
+        "npm-check-updates": "^2.10.2"
+    },
+    "dependencies": {
+        "node-red": "^0.16.2",
+        "node-red-contrib-batcher": "^0.2.6",
+        "node-red-contrib-guarded-suspension": "file:node/guard",
+        "node-red-contrib-psi-local-sum": "^0.0.1",
+        "node-red-contrib-psi-dft": "file:node/dft",
+        "node-red-contrib-psi-dlpa": "file:node/dlpa",
+        "node-red-contrib-psi-rgen": "file:node/rgen"
+    },
+    "license": "GPL-3.0",
+    "private": true
 }
