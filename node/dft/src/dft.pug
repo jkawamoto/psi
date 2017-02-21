@@ -1,0 +1,91 @@
+//-
+//- dft.pug
+//-
+//- Copyright (c) 2017 Junpei Kawamoto
+//-
+//- This program is free software: you can redistribute it and/or modify
+//- it under the terms of the GNU General Public License as published by
+//- the Free Software Foundation, either version 3 of the License, or
+//- (at your option) any later version.
+//-
+//- This program is distributed in the hope that it will be useful,
+//- but WITHOUT ANY WARRANTY; without even the implied warranty of
+//- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//- GNU General Public License for more details.
+//-
+//- You should have received a copy of the GNU General Public License
+//- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+script(type="text/javascript")
+    :babel(presets=["es2015"])
+        RED.nodes.registerType("dft", {
+            category: "function",
+            color: "#a6bbcf",
+            defaults: {
+                name: { value: "" },
+                topic: { value: "" },
+                k: {value: "-1"},
+            },
+            inputs: 1,
+            outputs: 1,
+            icon: "arrow-in.png",
+            label() { return this.name || "DFT" },
+            labelStyle() { return this.name ? "node_label_italic": "" }
+            });
+
+script(type="text/x-red", data-template-name="dft")
+    .form-row
+        label(for="node-input-name")
+            <i class="icon-tag"></i> Name
+        input#node-input-name(type="text", placeholder="Name")
+    .form-row
+        label(for="node-input-topic")
+            <i class="fa fa-tasks"></i> Topic
+        input#node-input-topic(type="text", placeholder="Topic")
+    .form-row
+        label(for="node-input-k")
+            Parameter k
+        input#node-input-k(type="text", placeholder="Topic")
+
+script(type="text/x-red", data-help-name="dft")
+    :markdown-it
+        This node is a part of
+        [Privacy-Preserving Stream Integration](https://github.com/jkawamoto/psi)
+        project.
+
+
+script(type="text/javascript")
+    :babel(presets=["es2015"])
+        RED.nodes.registerType("idft", {
+            category: "function",
+            color: "#a6bbcf",
+            defaults: {
+                name: { value: "" },
+                topic: { value: "" },
+                length: {value: "-1"}
+            },
+            inputs: 1,
+            outputs: 1,
+            icon: "arrow-in.png",
+            label() { return this.name || "IDFT" },
+            labelStyle() { return this.name ? "node_label_italic": "" }
+            });
+
+script(type="text/x-red", data-template-name="idft")
+    .form-row
+        label(for="node-input-name")
+            <i class="icon-tag"></i> Name
+        input#node-input-name(type="text", placeholder="Name")
+    .form-row
+        label(for="node-input-topic")
+            <i class="fa fa-tasks"></i> Topic
+        input#node-input-topic(type="text", placeholder="Topic")
+    .form-row
+        label(for="node-input-length")
+            Length
+        input#node-input-length(type="text", placeholder="Length of each vector.")
+
+script(type="text/x-red", data-help-name="idft")
+    :markdown-it
+        This node is a part of
+        [Privacy-Preserving Stream Integration](https://github.com/jkawamoto/psi)
+        project.

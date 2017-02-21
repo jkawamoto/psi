@@ -1,6 +1,7 @@
 # Node-RED nodes for Psi project
 This directory contains the following Node-RED nodes:
 
+* [dft](./dft/README.md): providing top-k Discrete Fourier Transformation,
 * [fluentd-parser](./fluentd-parser/README.md):
   parsing messages from [Fluentd](http://www.fluentd.org/),
 * [fplug-splitter](./fplug-splitter/README.md):

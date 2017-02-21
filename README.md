@@ -9,7 +9,6 @@ Directories
   * [compose](./compose/README.md): configurations for docker-compose
   * [dockerfile](./dockerfile/README.md): dockerfiles for Node-RED images.
   * [node](./node/README.md): Node-RED nodes.
-  * python: python scripts called from Node-RED.
 
 
 Submodules
