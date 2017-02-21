@@ -1,40 +1,42 @@
 {
-  "name": "node-red-contrib-psi-local-sum",
-  "version": "0.0.1",
-  "description": "Local aggregator of Psi project.",
-  "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jkawamoto/psi.git"
-  },
-  "keywords": [
-    "node-red"
-  ],
-  "node-red": {
-    "nodes": {
-      "local-sum": "lib/local-sum.js"
+    "name": "node-red-contrib-psi-local-sum",
+    "version": "0.0.1",
+    "description": "Local aggregator of Psi project.",
+    "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jkawamoto/psi.git"
+    },
+    "keywords": [
+        "node-red"
+    ],
+    "node-red": {
+        "nodes": {
+            "local-sum": "lib/local-sum.js"
+        }
+    },
+    "scripts": {
+        "build": "gulp prod build",
+        "check-updates": "ncu -u"
+    },
+    "files": [
+        "lib",
+        "src",
+        "gulpfile.coffee",
+        "LICENSE",
+        "package.json",
+        "README.md"
+    ],
+    "license": "GPL-3.0",
+    "devDependencies": {
+        "coffee-script": "^1.10.0",
+        "del": "^2.2.0",
+        "gulp": "^3.9.1",
+        "gulp-coffee": "^2.3.1",
+        "gulp-jade": "^1.1.0",
+        "gulp-uglify": "^2.0.1",
+        "jstransformer-coffee-script": "^1.0.0",
+        "jstransformer-markdown": "^1.1.0",
+        "npm-check-updates": "^2.10.2"
     }
-  },
-  "scripts": {
-    "compile": "gulp prod build"
-  },
-  "files": [
-    "lib",
-    "src",
-    "gulpfile.coffee",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ],
-  "license": "GPL-3.0",
-  "devDependencies": {
-    "coffee-script": "^1.10.0",
-    "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-coffee": "^2.3.1",
-    "gulp-jade": "^1.1.0",
-    "gulp-uglify": "^1.5.3",
-    "jstransformer-coffee-script": "^1.0.0",
-    "jstransformer-markdown": "^1.1.0"
-  }
 }
