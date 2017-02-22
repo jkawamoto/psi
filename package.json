@@ -8,13 +8,13 @@
         "doc": "doc"
     },
     "scripts": {
-        "preinstall": "gulp install && gulp build",
         "start": "node-red",
         "test": "node-red",
-        "build": "gulp",
+        "prebuild": "npm run deps",
+        "build": "gulp build",
         "restart": "npm run build && npm start",
         "gulp": "gulp",
-        "deps": "pip insrall -r requirements.txt",
+        "deps": "pip install -r requirements.txt",
         "check-updates": "ncu -u"
     },
     "repository": {

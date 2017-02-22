@@ -27,25 +27,24 @@ gulp.task("install", () => {
     return gulp.src("./node/*/package.json", {
             base: "."
         })
-        .pipe(exec("npm -prefix ./<%= file.relative.slice(0, -12) %> install ./<%= file.relative.slice(0, -12) %>"))
-        .pipe(exec.reporter())
+        .pipe(exec("npm --silent -prefix ./<%= file.relative.slice(0, -12) %> install ./<%= file.relative.slice(0, -12) %>"))
+        .pipe(exec.reporter());
 });
 
 // Build sub projects.
-gulp.task("build", () => {
+gulp.task("build", ["install"], () => {
     return gulp.src("./node/*/package.json", {
             base: "."
         })
         .pipe(exec("cd ./<%= file.relative.slice(0, -12)%> && npm run build"))
-        // .pipe(exec("echo ./<%= file.relative.slice(0, -12) %>"))
-        .pipe(exec.reporter())
+        .pipe(exec.reporter());
 });
 
 // Uninstall task uninstalls developping packages.
 gulp.task("update", ["build"], () => {
 
     const re = /npm_package_dependencies_node_red_contrib_psi_.*/
-    const pkgs = [];
+    const pkgs = ["npm_package_dependencies_node_red_contrib_guarded_suspension"];
     for (env in process.env) {
         if (re.test(env)) {
             pkgs.push(env);

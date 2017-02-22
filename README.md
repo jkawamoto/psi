@@ -8,8 +8,14 @@ Prepare [Node.js](https://nodejs.org/), [Python 3](https://www.python.org/), and
 [pip](https://pip.pypa.io/en/stable/); then install dependencies:
 
 ```
-$ npm install
-$ npm run deps
+# Install packages used to build.
+$ npm install --only=dev
+
+# Build related packages.
+$ npm run build
+
+# Install dependencies.
+$ npm install --only=prod
 ```
 
 after that, you can run Node-RED including privacy preserving algorithms:
