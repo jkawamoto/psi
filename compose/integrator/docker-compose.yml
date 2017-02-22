@@ -1,7 +1,7 @@
 #
 # dockerfile-compose.yml
 #
-# Copyright (c) 2015 Junpei Kawamoto
+# Copyright (c) 2015-2017 Junpei Kawamoto
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ mongo:
     - /var/mongo:/data/db
 
 node-red:
-  image: jkawamoto/node-red
+  image: jkawamoto/psi-node-red
   volumes:
     - /var/node-red:/root/.node-red
   links:
