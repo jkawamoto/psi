@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 #
 # idft.py
 #
@@ -29,7 +29,7 @@ from numpy import fft
 def decode(v):
     """Decode a row vector consisting of complex values.
     """
-    return [e["real"]+ e["imag"]*1j for e in v]
+    return [e["real"] + e["imag"] * 1j for e in v]
 
 
 def idft(infile, output, length):

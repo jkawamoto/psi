@@ -80,7 +80,7 @@ module.exports = (RED) => {
         //   --port PORT        Port number of the DLPA server to be connected.
         //   --id CLIENT_ID     Client ID
         //   --epsilon EPSILON  Epsilon used in the Laplace distribution to add noises.
-        const proc = spawn("python", [
+        const proc = spawn("python3", [
             "-m", "dlpanode.server",
             "--listen", port,
             "--host", config.host,
@@ -156,7 +156,7 @@ module.exports = (RED) => {
         //   --clients CLIENTS     The number of clicents.
         //   --max-workers MAX_WORKERS
         //                         The maximum number of workiers (default: 10).
-        const proc = spawn("python", [
+        const proc = spawn("python3", [
             "-m", "dlpa.server",
             "--port", config.port,
             "--clients", config.nclient,
