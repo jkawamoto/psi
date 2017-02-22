@@ -40,6 +40,15 @@ gulp.task("build", ["install"], () => {
         .pipe(exec.reporter());
 });
 
+// Run sub projects' tests.
+gulp.task("test", () => {
+    return gulp.src("./node/*/package.json", {
+            base: "."
+        })
+        .pipe(exec("cd ./<%= file.relative.slice(0, -12)%> && npm test"))
+        .pipe(exec.reporter());
+});
+
 // Uninstall task uninstalls developping packages.
 gulp.task("update", ["build"], () => {
 

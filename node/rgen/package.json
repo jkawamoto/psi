@@ -17,6 +17,7 @@
     },
     "scripts": {
         "build": "gulp build",
+        "test": ":",
         "check-updates": "ncu -u"
     },
     "files": [

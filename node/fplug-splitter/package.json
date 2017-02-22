@@ -17,7 +17,8 @@
         }
     },
     "scripts": {
-        "build": "gulp prod build"
+        "build": "gulp prod build",
+        "test": ":"
     },
     "files": [
         "lib",

@@ -9,7 +9,7 @@
     },
     "scripts": {
         "start": "node-red",
-        "test": "node-red",
+        "test": "gulp test",
         "prebuild": "npm run deps",
         "build": "gulp build",
         "restart": "npm run build && npm start",

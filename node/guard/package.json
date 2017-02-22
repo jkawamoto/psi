@@ -25,6 +25,7 @@
     ],
     "scripts": {
         "build": "gulp prod build",
+        "test": ":",
         "check-updates": "ncu -u"
     },
     "license": "GPL-3.0",
