@@ -1,14 +1,26 @@
 # Dockerfiles for PSI Node-RED service
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
+[![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Fpsi--node--red-blue.svg)](https://hub.docker.com/r/jkawamoto/psi-node-red/)
+[![MicroBadger](https://images.microbadger.com/badges/image/jkawamoto/psi-node-red.svg)](https://microbadger.com/images/jkawamoto/psi-node-red)
 
 Dockerfiles of a customized Node-RED service which contains nodes provided by
 this project.
+
+
+## Pull Image
+Build image, `jkawamoto/psi-node-red`, is provided in
+[Docker Hub](https://hub.docker.com/), and you can pull it;
+
+```
+$ docker pull jkawamoto/psi-node-red
+```
+
 
 ## Build Image
 To build a docker image, `psi-node-red`, run the following command from top of
 this repository (not from this directory):
 ```
-$ docker build -t psi-node-red -f dockerfile/node-red/Dockerfile .
+$ docker build -t jkawamoto/psi-node-red -f dockerfile/node-red/Dockerfile .
 ```
 
 

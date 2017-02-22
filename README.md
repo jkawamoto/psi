@@ -1,6 +1,8 @@
 # &#x03C8;: Privacy-Preserving Stream Integration
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 [![CircleCI](https://circleci.com/gh/jkawamoto/psi/tree/master.svg?style=svg)](https://circleci.com/gh/jkawamoto/psi/tree/master)
+[![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Fpsi--node--red-blue.svg)](https://hub.docker.com/r/jkawamoto/psi-node-red/)
+[![MicroBadger](https://images.microbadger.com/badges/image/jkawamoto/psi-node-red.svg)](https://microbadger.com/images/jkawamoto/psi-node-red)
 
 This project implements a privacy-preserving stream integration algorithm on [Node-RED](http://nodered.org/).
 
@@ -24,6 +26,25 @@ after that, you can run Node-RED including privacy preserving algorithms:
 ```
 $ npm start
 ```
+
+## Run in a docker container
+This project also supports [Docker](https://www.docker.com/) to run the Node-RED
+application in a container.
+You can pull a docker images, `jkawamoto/psi-node-red`, from
+[Docker Hub](https://hub.docker.com/).
+
+To start a Node-RED service listening port 1880, run
+
+```
+$ docker run -d --name node-red -p 1880:1880 jkawamoto/psi-node-red
+```
+
+You can also build the image, `jkawamoto/psi-node-red`, by your self:
+
+```
+$ docker build -t psi-node-red -f dockerfile/node-red/Dockerfile .
+```
+
 
 ## Directories
   * [compose](./compose/README.md): configurations for docker-compose
