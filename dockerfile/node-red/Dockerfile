@@ -32,9 +32,16 @@ RUN if [ -n "$APT_PROXY" ]; then \
     fi
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl && \
+    apt-get install -y --no-install-recommends curl libmpc-dev libgmp3-dev libmpfr-dev && \
     apt-get clean && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+RUN curl ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz -o mpc-1.0.3.tar.gz && \
+    tar -zxvf mpc-1.0.3.tar.gz && \
+    cd mpc-1.0.3 && \
+    sh configure && \
+    make && \
+    make install && \
+    make clean
 
 RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 RUN PATH="/root/.pyenv/bin:$PATH" && \
@@ -42,7 +49,9 @@ RUN PATH="/root/.pyenv/bin:$PATH" && \
     eval "$(pyenv virtualenv-init -)" && \
     pyenv install -s -v $PYTHON_VERSION && \
     pyenv local $PYTHON_VERSION && \
-    pip install --upgrade pip
+    pip install --upgrade pip && \
+    pip install --install-option="--shared=/usr/local/lib" gmpy2
+
 
 COPY . .
 RUN PATH="/root/.pyenv/bin:$PATH" && \
