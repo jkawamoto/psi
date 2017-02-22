@@ -35,7 +35,7 @@ from concurrent import futures
 import grpc
 import numpy as np
 
-from dlpa.key import generate_kaypair
+from dlpa.key import generate_keypair
 from dlpa import dlpa_pb2
 from dlpa import dlpa_pb2_grpc
 
@@ -165,7 +165,7 @@ class DLPAServicer(dlpa_pb2_grpc.DLPAServicer):
 
     def __init__(self, nclient=20, m_length=2048):
         self.nclient = nclient
-        self.sk, self.pk = generate_kaypair(m_length)
+        self.sk, self.pk = generate_keypair(m_length)
         self.cks = self.sk.generate_user_keys(nclient)
 
         # Map of target -> ProtocolCondition for Encrypt-Sum.

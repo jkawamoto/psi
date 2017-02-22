@@ -312,7 +312,7 @@ class ClientKey(object):
         return y
 
 
-def generate_kaypair(m_length=2048):
+def generate_keypair(m_length=2048):
     """Generate a kaypair.
     """
     p = q = m = None

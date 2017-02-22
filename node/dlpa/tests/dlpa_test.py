@@ -30,7 +30,7 @@ import numpy as np
 
 sys.path.append("./src/")
 from dlpa.util import powmod, random_m  # pylint:disable=wrong-import-position
-from dlpa.key import generate_kaypair  # pylint:disable=wrong-import-position
+from dlpa.key import generate_keypair  # pylint:disable=wrong-import-position
 
 
 class TestKeyGeneration(unittest.TestCase):
@@ -40,7 +40,7 @@ class TestKeyGeneration(unittest.TestCase):
     def setUp(self):
         """Generate a key pair for each test.
         """
-        self.sk, self.pk = generate_kaypair(128)
+        self.sk, self.pk = generate_keypair(128)
 
     def test_propertyof_m_and_lambda(self):
         """Test :math:`b^{m\\lambda} \\equiv 1 \\mod m^{2}`.
@@ -76,7 +76,7 @@ class TestPaillierCryptoSystem(unittest.TestCase):
     def setUp(self):
         """Generate a key pair for each test.
         """
-        self.sk, self.pk = generate_kaypair(128)
+        self.sk, self.pk = generate_keypair(128)
 
     def test_encryption(self):
         """Test Dec(Enc(v)) = v.
@@ -126,7 +126,7 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         """Generate a key pair and client keys.
         """
-        self.sk, self.pk = generate_kaypair(128)
+        self.sk, self.pk = generate_keypair(128)
         self.cks = self.sk.generate_user_keys(20)
 
 
