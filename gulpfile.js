@@ -16,41 +16,72 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const gulp = require("gulp");
-const exec = require("gulp-exec");
-const cp = require("child_process");
 const gutil = require("gulp-util");
+const execFileSync = require("child_process").execFileSync;
+const glob = require("glob");
+const path = require("path");
+
 
 gulp.task("default", ["update"]);
 
 // Install packages for sub projects.
-gulp.task("install", () => {
-    return gulp.src("./node/*/package.json", {
-            base: "."
-        })
-        .pipe(exec("npm --silent -prefix ./<%= file.relative.slice(0, -12) %> install ./<%= file.relative.slice(0, -12) %>"))
-        .pipe(exec.reporter());
+gulp.task("install", (done) => {
+
+    glob("./node/*/package.json", (err, files) => {
+
+        files.forEach((file) => {
+            gutil.log("Install dependencies in", gutil.colors.magenta(file));
+            const dirname = path.dirname(file);
+            execFileSync("npm", ["-prefix", dirname, "install", dirname], {
+                stdio: "inherit"
+            });
+        });
+        done(err);
+
+    });
+
 });
 
 // Build sub projects.
-gulp.task("build", ["install"], () => {
-    return gulp.src("./node/*/package.json", {
-            base: "."
-        })
-        .pipe(exec("cd ./<%= file.relative.slice(0, -12)%> && npm run build"))
-        .pipe(exec.reporter());
+gulp.task("build", ["install"], (done) => {
+
+    glob("./node/*/package.json", (err, files) => {
+
+        files.forEach((file) => {
+            const dirname = path.dirname(file);
+            gutil.log("Build package", gutil.colors.magenta(dirname));
+            execFileSync("npm", ["run", "build"], {
+                cwd: dirname,
+                stdio: "inherit"
+            });
+        });
+        done(err);
+
+    });
+
 });
 
 // Run sub projects' tests.
-gulp.task("test", () => {
-    return gulp.src("./node/*/package.json", {
-            base: "."
-        })
-        .pipe(exec("cd ./<%= file.relative.slice(0, -12)%> && npm test"))
-        .pipe(exec.reporter());
+gulp.task("test", (done) => {
+
+    glob("./node/*/package.json", (err, files) => {
+
+        files.forEach((file) => {
+            const dirname = path.dirname(file);
+            gutil.log("Build package", gutil.colors.magenta(dirname));
+            execFileSync("npm", ["test"], {
+                cwd: dirname,
+                stdio: "inherit"
+            });
+        });
+        done(err);
+
+    });
+
 });
 
 // Uninstall task uninstalls developping packages.
-gulp.task("update", ["build"], () => {
+gulp.task("update", ["build"], (done) => {
 
     const re = /npm_package_dependencies_node_red_contrib_psi_.*/
     const pkgs = ["npm_package_dependencies_node_red_contrib_guarded_suspension"];
@@ -60,43 +91,21 @@ gulp.task("update", ["build"], () => {
         }
     }
 
-    return new Promise((resolve, reject) => {
-
-        const names = pkgs.map(v => {
-            return v.substr("npm_package_dependencies_".length)
-                .replace(/_/g, "-")
-        });
-
-        gutil.log("Executing: npm uninstall", gutil.colors.yellow(names.join(" ")));
-        cp.exec("npm uninstall " + names.join(" "), (err, stdout, stderr) => {
-            gutil.log(stdout);
-            if (!stderr) {
-                gutil.log(gutil.colors.red(stderr));
-            }
-            if (err) {
-                reject(err);
-                return;
-            }
-            resolve();
-        });
-
-    }).then(() => {
-
-        const names = pkgs.map(v => {
-            return v.substr("npm_package_dependencies_".length)
-                .replace(/_/g, "-") + "@" + process.env[v];
-        });
-        gutil.log("Executing: npm install", gutil.colors.yellow(names.join(" ")));
-        cp.exec("npm install " + names.join(" "), (err, stdout, stderr) => {
-            gutil.log(stdout);
-            if (!stderr) {
-                gutil.log(gutil.colors.red(stderr));
-            }
-            if (err) {
-                return Promise.reject(err);
-            }
-        });
-
+    const names = pkgs.map(v => {
+        return v.substr("npm_package_dependencies_".length)
+            .replace(/_/g, "-");
     });
 
-})
+    gutil.log("Executing: npm uninstall", gutil.colors.yellow(names.join(" ")));
+    execFileSync("npm", ["uninstall"].concat(names), {
+        stdio: "inherit"
+    });
+
+    gutil.log("Executing: npm install", gutil.colors.yellow(names.join(" ")));
+    execFileSync("npm", ["install"].concat(names), {
+        stdio: "inherit"
+    });
+
+    done();
+
+});

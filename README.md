@@ -1,5 +1,6 @@
 # &#x03C8;: Privacy-Preserving Stream Integration
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
+[![CircleCI](https://circleci.com/gh/jkawamoto/psi/tree/master.svg?style=svg)](https://circleci.com/gh/jkawamoto/psi/tree/master)
 
 This project implements a privacy-preserving stream integration algorithm on [Node-RED](http://nodered.org/).
 

@@ -12,7 +12,7 @@
         "test": "gulp test",
         "prebuild": "npm run deps",
         "build": "gulp build",
-        "restart": "npm run build && npm start",
+        "restart": "npm run update && npm start",
         "gulp": "gulp",
         "deps": "pip install -r requirements.txt",
         "check-updates": "ncu -u"
@@ -26,8 +26,8 @@
     },
     "homepage": "https://github.com/jkawamoto/psi",
     "devDependencies": {
+        "glob": "^7.1.1",
         "gulp": "^3.9.0",
-        "gulp-exec": "^2.1.3",
         "gulp-util": "^3.0.8",
         "npm-check-updates": "^2.10.2"
     },
