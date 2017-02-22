@@ -40,7 +40,7 @@ class TestDlpanodeClient(unittest.TestCase):
     def setUp(self):
         """Prepare servers.
         """
-        self.servicer = DLPAServicer(nclient=1)
+        self.servicer = DLPAServicer(nclient=1, m_length=128)
         self.port = random.randint(50000, 59999)
         self.server = dlpa_server(self.port, servicer=self.servicer)
 

@@ -21,6 +21,7 @@
 # pylint: disable=import-error,invalid-name,too-many-locals
 from __future__ import division
 from functools import reduce  # pylint: disable=redefined-builtin,unused-import
+import logging
 import random
 import sys
 import unittest
@@ -39,7 +40,7 @@ class TestKeyGeneration(unittest.TestCase):
     def setUp(self):
         """Generate a key pair for each test.
         """
-        self.sk, self.pk = generate_kaypair()
+        self.sk, self.pk = generate_kaypair(128)
 
     def test_propertyof_m_and_lambda(self):
         """Test :math:`b^{m\\lambda} \\equiv 1 \\mod m^{2}`.
@@ -75,7 +76,7 @@ class TestPaillierCryptoSystem(unittest.TestCase):
     def setUp(self):
         """Generate a key pair for each test.
         """
-        self.sk, self.pk = generate_kaypair()
+        self.sk, self.pk = generate_kaypair(128)
 
     def test_encryption(self):
         """Test Dec(Enc(v)) = v.
@@ -125,7 +126,7 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         """Generate a key pair and client keys.
         """
-        self.sk, self.pk = generate_kaypair()
+        self.sk, self.pk = generate_kaypair(128)
         self.cks = self.sk.generate_user_keys(20)
 
 
@@ -307,6 +308,7 @@ class TestEncryptNoisySum(BaseTestCase):
         Yt = []
         X = []
         T = []
+        logging.info("Step1: calling encryot_noisy_sum")
         for i, c in enumerate(self.cks):
             y, y_t, x, t = c.encrypt_noisy_sum(i + 1, 0.01)
             Y.append(y)
@@ -314,10 +316,15 @@ class TestEncryptNoisySum(BaseTestCase):
             X.append(x)
             T.append(t)
 
+        logging.info("Step2: aggregate_noisy_sum")
         cy = self.sk.aggregate_noisy_sum(Y)
+
+        logging.info("Step3: aggregate_noisy_sum2")
         cp = self.sk.aggregate_noisy_sum2([
             [t[i](c) for i, c in enumerate(cy)] + [x] for t, x in zip(Yt, X)
         ])
+
+        logging.info("Step4: decrypt_sum")
         v = self.sk.decrypt_sum([t(cp) for t in T])
 
         self.assertNotEqual(v, 0)
@@ -329,6 +336,7 @@ class TestEncryptNoisySum(BaseTestCase):
         Yt = []
         X = []
         T = []
+        logging.info("Step1: calling encryot_noisy_sum")
         for i, c in enumerate(self.cks):
             y, y_t, x, t = c.encrypt_noisy_sum(i + 1, 0)
             Y.append(y)
@@ -336,10 +344,15 @@ class TestEncryptNoisySum(BaseTestCase):
             X.append(x)
             T.append(t)
 
+        logging.info("Step2: aggregate_noisy_sum")
         cy = self.sk.aggregate_noisy_sum(Y)
+
+        logging.info("Step3: aggregate_noisy_sum2")
         cp = self.sk.aggregate_noisy_sum2([
             [t[i](c) for i, c in enumerate(cy)] + [x] for t, x in zip(Yt, X)
         ])
+
+        logging.info("Step4: decrypt_sum")
         v = self.sk.decrypt_sum([t(cp) for t in T])
 
         self.assertEqual(v, (1 + 20) * 20 // 2)
@@ -351,6 +364,7 @@ class TestEncryptNoisySum(BaseTestCase):
         Yt = []
         X = []
         T = []
+        logging.info("Step1: calling encryot_noisy_sum")
         for i, c in enumerate(self.cks):
             y, y_t, x, t = c.encrypt_noisy_sum(
                 i + 1, 0, R=[np.array([0]) for _ in range(5)])
@@ -360,10 +374,15 @@ class TestEncryptNoisySum(BaseTestCase):
             T.append(t)
         ans = (1 + len(self.cks)) * len(self.cks) // 2
 
+        logging.info("Step2: aggregate_noisy_sum")
         cy = self.sk.aggregate_noisy_sum(Y)
+
+        logging.info("Step3: aggregate_noisy_sum2")
         cp = self.sk.aggregate_noisy_sum2([
             [t[i](c) for i, c in enumerate(cy)] + [x] for t, x in zip(Yt, X)
         ])
+
+        logging.info("Step4: decrypt_sum")
         v = self.sk.decrypt_sum([t(cp) for t in T])
 
         self.assertEqual(v, ans)
@@ -380,6 +399,7 @@ class TestEncryptNoisySum(BaseTestCase):
         Yt = []
         X = []
         T = []
+        logging.info("Step1: calling encryot_noisy_sum")
         for c, v in zip(self.cks, data):
             y, y_t, x, t = c.encrypt_noisy_sum(v, 0)
             Y.append(y)
@@ -387,10 +407,15 @@ class TestEncryptNoisySum(BaseTestCase):
             X.append(x)
             T.append(t)
 
+        logging.info("Step2: aggregate_noisy_sum")
         cy = self.sk.aggregate_noisy_sum(Y)
+
+        logging.info("Step3: aggregate_noisy_sum2")
         cp = self.sk.aggregate_noisy_sum2([
             [t[i](c) for i, c in enumerate(cy)] + [x] for t, x in zip(Yt, X)
         ])
+
+        logging.info("Step4: decrypt_sum")
         res = self.sk.decrypt_sum([t(cp) for t in T])
 
         for v, d in zip(res, sum(data) % self.pk.m):
@@ -408,6 +433,7 @@ class TestEncryptNoisySum(BaseTestCase):
         Yt = []
         X = []
         T = []
+        logging.info("Step1: calling encryot_noisy_sum")
         for c, v in zip(self.cks, data):
             R = [np.array([0 for _ in range(len(v))]) for _ in range(5)]
             y, y_t, x, t = c.encrypt_noisy_sum(v, 0, R)
@@ -416,10 +442,15 @@ class TestEncryptNoisySum(BaseTestCase):
             X.append(x)
             T.append(t)
 
+        logging.info("Step2: aggregate_noisy_sum")
         cy = self.sk.aggregate_noisy_sum(Y)
+
+        logging.info("Step3: aggregate_noisy_sum2")
         cp = self.sk.aggregate_noisy_sum2([
             [t[i](c) for i, c in enumerate(cy)] + [x] for t, x in zip(Yt, X)
         ])
+
+        logging.info("Step4: decrypt_sum")
         res = self.sk.decrypt_sum([t(cp) for t in T])
 
         for v, d in zip(res, sum(data) % self.pk.m):
@@ -437,6 +468,7 @@ class TestEncryptNoisySum(BaseTestCase):
         Yt = []
         X = []
         T = []
+        logging.info("Step1: calling encryot_noisy_sum")
         for c, v in zip(self.cks, data):
             R = [np.array([0 for _ in range(len(v))]) for _ in range(5)]
             y, y_t, x, t = c.encrypt_noisy_sum(v, 0, R)
@@ -445,10 +477,15 @@ class TestEncryptNoisySum(BaseTestCase):
             X.append(x)
             T.append(t)
 
+        logging.info("Step2: aggregate_noisy_sum")
         cy = self.sk.aggregate_noisy_sum(Y)
+
+        logging.info("Step3: aggregate_noisy_sum2")
         cp = self.sk.aggregate_noisy_sum2([
             [t[i](c) for i, c in enumerate(cy)] + [x] for t, x in zip(Yt, X)
         ])
+
+        logging.info("Step4: decrypt_sum")
         res = self.sk.decrypt_sum([t(cp) for t in T])
 
         self.assertEqual(len(res), len(data[0]))

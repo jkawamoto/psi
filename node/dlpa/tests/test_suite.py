@@ -18,6 +18,7 @@
 """Define the test suite.
 """
 # pylint: disable=import-error
+import logging
 import sys
 import unittest
 
@@ -29,6 +30,7 @@ from tests import rpc_test
 def suite():
     """Return a test suite.
     """
+    logging.basicConfig(level=logging.INFO)
     loader = unittest.TestLoader()
     res = unittest.TestSuite()
     res.addTest(loader.loadTestsFromModule(dlpa_test))

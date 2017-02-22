@@ -39,7 +39,7 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         """Set up a pair of rpc client/server.
         """
-        self.servicer = DLPAServicer(nclient=2)
+        self.servicer = DLPAServicer(nclient=2, m_length=128)
         self.port = random.randint(40051, 59999)
         self.server = server(self.port, servicer=self.servicer)
 
