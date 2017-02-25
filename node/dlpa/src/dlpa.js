@@ -28,7 +28,20 @@ const MAG = 10 ** 5;
 // flatten returns a list which flatten the given matrix.
 function flatten(matrix) {
     const res = [];
+
+    // If the given matrix is not a matrix but a scalar.
+    if (!Array.isArray(matrix)) {
+        matrix = [
+            [matrix]
+        ];
+    }
+
     matrix.forEach((row) => {
+        // If the given matrix is a vector.
+        if (!Array.isArray(row)) {
+            row = [row];
+        }
+
         row.forEach((elem) => {
             res.push(elem.real);
             res.push(elem.imag);
@@ -103,7 +116,7 @@ module.exports = (RED) => {
             this.log(line)
         })
 
-        const client = new dlpanode.PasteClient(
+        const client = new dlpanode.DLPAClient(
             `localhost:${port}`, grpc.credentials.createInsecure());
 
         this.on("input", (msg) => {
