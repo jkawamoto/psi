@@ -57,7 +57,7 @@ setup(
             "idft = idft:main",
         ]
     },
-    # test_suite="tests.suite",
+    test_suite="tests.suite",
     license="GPLv3",
     classifiers=[
         "Development Status :: 3 - Alpha",
