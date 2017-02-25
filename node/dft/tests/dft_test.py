@@ -19,7 +19,7 @@
 """
 # pylint: disable=import-error
 import json
-from StringIO import StringIO
+from io import StringIO
 from os import path
 import sys
 import unittest
