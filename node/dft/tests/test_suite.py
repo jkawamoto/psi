@@ -23,6 +23,7 @@ import sys
 import unittest
 
 from tests import dft_test
+from tests import idft_test
 
 
 def suite():
@@ -32,6 +33,7 @@ def suite():
     loader = unittest.TestLoader()
     res = unittest.TestSuite()
     res.addTest(loader.loadTestsFromModule(dft_test))
+    res.addTest(loader.loadTestsFromModule(idft_test))
     return res
 
 
