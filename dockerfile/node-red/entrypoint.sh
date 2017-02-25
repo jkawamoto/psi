@@ -24,4 +24,4 @@ if [[ $# != 0 ]]; then
   exec $@
 fi
 
-./node_modules/.bin/node-red -p $PORT --userDIR /data -v
+./node_modules/.bin/node-red -p $PORT -v
