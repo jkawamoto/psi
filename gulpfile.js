@@ -80,6 +80,29 @@ gulp.task("test", (done) => {
 
 });
 
+// Check package updates.
+gulp.task("check-update", (done) => {
+
+    execFileSync("npm", ["run", "check-update"], {
+        stdio: "inherit"
+    });
+    glob("./node/*/package.json", (err, files) => {
+        files.forEach((file) => {
+            const dirname = path.dirname(file);
+            gutil.log("Check update:", gutil.colors.magenta(dirname));
+            execFileSync("npm", ["run", "check-update"], {
+                cwd: dirname,
+                stdio: "inherit"
+            });
+        });
+        done(err);
+    });
+
+});
+
+
+
+
 // Uninstall task uninstalls developping packages.
 gulp.task("update", ["build"], (done) => {
 

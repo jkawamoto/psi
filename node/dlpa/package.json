@@ -22,7 +22,7 @@
     "gulp": "gulp",
     "docs": "cd docs && make html",
     "pandoc": "pandoc --from markdown --to rst --out README.rst README.md",
-    "check-updates": "ncu -u"
+    "check-update": "ncu -u"
   },
   "files": [
     "lib",
