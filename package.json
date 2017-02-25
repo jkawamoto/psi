@@ -1,45 +1,46 @@
 {
-    "name": "paste",
-    "version": "0.5.0",
-    "description": "Privacy-Preserving Stream Integration",
-    "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
-    "main": "index.js",
-    "directories": {
-        "doc": "doc"
-    },
-    "scripts": {
-        "start": "node-red",
-        "test": "gulp test",
-        "prebuild": "npm run deps",
-        "build": "gulp build",
-        "restart": "npm run update && npm start",
-        "gulp": "gulp",
-        "deps": "pip install -r requirements.txt",
-        "check-updates": "ncu -u"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jkawamoto/psi.git"
-    },
-    "bugs": {
-        "url": "https://github.com/jkawamoto/psi/issues"
-    },
-    "homepage": "https://github.com/jkawamoto/psi",
-    "devDependencies": {
-        "glob": "^7.1.1",
-        "gulp": "^3.9.0",
-        "gulp-util": "^3.0.8",
-        "npm-check-updates": "^2.10.2"
-    },
-    "dependencies": {
-        "node-red": "^0.16.2",
-        "node-red-contrib-batcher": "^0.2.6",
-        "node-red-contrib-guarded-suspension": "file:node/guard",
-        "node-red-contrib-psi-local-sum": "^0.0.1",
-        "node-red-contrib-psi-dft": "file:node/dft",
-        "node-red-contrib-psi-dlpa": "file:node/dlpa",
-        "node-red-contrib-psi-rgen": "file:node/rgen"
-    },
-    "license": "GPL-3.0",
-    "private": true
+  "name": "paste",
+  "version": "0.5.0",
+  "description": "Privacy-Preserving Stream Integration",
+  "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "node-red",
+    "test": "gulp test",
+    "prebuild": "npm run deps",
+    "build": "gulp build",
+    "restart": "npm run update && npm start",
+    "gulp": "gulp",
+    "deps": "pip install -r requirements.txt",
+    "check-updates": "ncu -u",
+    "build:docker": "docker build -t jkawamoto/psi-node-red -f dockerfile/node-red/Dockerfile ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jkawamoto/psi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jkawamoto/psi/issues"
+  },
+  "homepage": "https://github.com/jkawamoto/psi",
+  "devDependencies": {
+    "glob": "^7.1.1",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.8",
+    "npm-check-updates": "^2.10.2"
+  },
+  "dependencies": {
+    "node-red": "^0.16.2",
+    "node-red-contrib-batcher": "^0.2.6",
+    "node-red-contrib-guarded-suspension": "file:node/guard",
+    "node-red-contrib-psi-local-sum": "^0.0.1",
+    "node-red-contrib-psi-dft": "file:node/dft",
+    "node-red-contrib-psi-dlpa": "file:node/dlpa",
+    "node-red-contrib-psi-rgen": "file:node/rgen"
+  },
+  "license": "GPL-3.0",
+  "private": true
 }

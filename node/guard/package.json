@@ -18,7 +18,7 @@
     "files": [
         "lib",
         "src",
-        "gulpfile.coffee",
+        "gulpfile.js",
         "LICENSE",
         "package.json",
         "README.md"

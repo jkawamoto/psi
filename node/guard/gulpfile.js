@@ -36,8 +36,7 @@ gulp.task("clean", () => {
     return del([`${conf.dest}/**/*`]);
 });
 
-
-// Compile coffee scripts.
+// Compile JavaScripts.
 gulp.task("js", ["clean"], () => {
     let p = gulp.src(`${conf.src}/*.js`)
         .pipe(babel({
