@@ -52,11 +52,13 @@ RUN PATH="/root/.pyenv/bin:$PATH" && \
     pip install --upgrade pip && \
     pip install --install-option="--shared=/usr/local/lib" gmpy2
 
-
 COPY . .
 RUN PATH="/root/.pyenv/bin:$PATH" && \
     eval "$(pyenv init -)" && \
     eval "$(pyenv virtualenv-init -)" && \
     npm install --only=dev && npm run build && npm install --only=prod
+
+EXPOSE 1880
+EXPOSE 50051
 
 ENTRYPOINT ["./dockerfile/node-red/entrypoint.sh"]
