@@ -55,8 +55,7 @@ module.exports = (RED) => {
                 const res = [];
                 const keys = []
                 for (var k in topics) {
-                    const queue = topics[k];
-                    const m = queue.shift();
+                    const m = topics[k].shift();
                     time = (m.time != null) && m.time > time ? m.time : time;
                     res.push(m.payload);
                     keys.push(k);
