@@ -79,6 +79,7 @@ script(type="text/javascript")
                 topic: { value: "dlpa-result" },
                 port: { value: "50051" },
                 nclient: { value: "" },
+                span: { value: "" },
                 rows: { value: "" },
                 columns: { value: "1" }
             },
@@ -104,6 +105,9 @@ script(type="text/x-red", data-template-name="dlpa-server")
     .form-row
         label(for="node-input-nclient") Clients
         input#node-input-nclient(type="text", placeholder="Number of clients")
+    .form-row
+        label(for="node-input-span") Time span
+        input#node-input-span(type="text", placeholder="Second of one time slot.")
     .form-row
         label(for="node-input-rows") Rows
         input#node-input-rows(type="text", placeholder="Number of rows")

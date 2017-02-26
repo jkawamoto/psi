@@ -173,7 +173,8 @@ module.exports = (RED) => {
             "-m", "dlpa.server",
             "--port", config.port,
             "--clients", config.nclient,
-            "--key-length", "128"
+            "--key-length", "128",
+            "--span", config.span ? config.span || "300"
         ], {
             cwd: __dirname,
         });

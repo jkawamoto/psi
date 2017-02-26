@@ -161,12 +161,14 @@ class DLPAServicer(dlpa_pb2_grpc.DLPAServicer):
     Args:
       nclient: The number of client connecting this server.
       m_length: Srcurity parameter.
+      span: Second of one time slot.
     """
 
-    def __init__(self, nclient=20, m_length=2048):
+    def __init__(self, nclient=20, m_length=2048, span=_TIME_SLOT):
         self.nclient = nclient
         self.sk, self.pk = generate_keypair(m_length)
         self.cks = self.sk.generate_user_keys(nclient)
+        self.span = span
 
         # Map of target -> ProtocolCondition for Encrypt-Sum.
         self.encrypt_sum = defaultdict(functools.partial(
@@ -215,12 +217,11 @@ class DLPAServicer(dlpa_pb2_grpc.DLPAServicer):
                 )
             )
 
-    @staticmethod
-    def aggregate_ciphertexts(conditon, request, _context):
+    def aggregate_ciphertexts(self, conditon, request, _context):
         """Put a cipertext and wait to aggregate them with a given context.
         """
         cid = request.id
-        slot = request.time // _TIME_SLOT
+        slot = request.time // self.span
         value = np.array([int(v) for v in request.value])
         target = request.target
 
@@ -264,7 +265,7 @@ class DLPAServicer(dlpa_pb2_grpc.DLPAServicer):
         """Takes a cipertext for encrypt-noisy-sum and returns aggregated value.
         """
         cid = request.id
-        slot = request.time // _TIME_SLOT
+        slot = request.time // self.span
         # c5 is not used in this phase.
         value = [
             np.array([int(v) for v in request.value.c1]),
@@ -364,6 +365,10 @@ def main():
     parser.add_argument(
         "--key-length", default=2048, type=int, dest="m_length",
         help="Bit length of the secret key (default: 2048).")
+    parser.add_argument(
+        "--time-span", default=_TIME_SLOT, type=int, dest="span",
+        help="Second of one time slot."
+    )
 
     s = server(**vars(parser.parse_args()))
 
