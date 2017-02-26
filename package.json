@@ -12,7 +12,7 @@
     "test": "gulp test",
     "prebuild": "npm run deps",
     "build": "gulp build",
-    "restart": "npm run update && npm start",
+    "restart": "gulp update && npm start",
     "gulp": "gulp",
     "deps": "pip install -r requirements.txt",
     "check-update": "ncu -u",
