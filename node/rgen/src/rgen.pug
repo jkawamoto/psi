@@ -22,7 +22,8 @@ script(type="text/javascript")
             color: "#a6bbcf",
             defaults: {
                 name: { value: "" },
-                topic: { value: "" }
+                topic: { value: "" },
+                shift: { value: "0" }
             },
             inputs: 0,
             outputs: 1,
@@ -33,13 +34,16 @@ script(type="text/javascript")
 
 script(type="text/x-red", data-template-name="rgen")
     .form-row
+        label(for="node-input-topic")
+            <i class="fa fa-tasks"></i> Topic
+        input#node-input-topic(type="text", placeholder="Topic")
+    .form-row
         label(for="node-input-name")
             <i class="icon-tag"></i> Name
         input#node-input-name(type="text", placeholder="Name")
     .form-row
-        label(for="node-input-topic")
-            <i class="fa fa-tasks"></i> Topic
-        input#node-input-topic(type="text", placeholder="Topic")
+        label(for="node-input-shift") Shift
+        input#node-input-shift(type="text", placeholder="Shift number")
 
 script(type="text/x-red", data-help-name="rgen")
     :markdown-it

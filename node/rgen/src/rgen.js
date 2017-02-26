@@ -27,7 +27,7 @@ module.exports = (RED) => {
                 const data = new Date();
                 this.send({
                     "topic": config.topic,
-                    "payload": Math.sin(data.getTime() + Math.random()),
+                    "payload": Math.sin(data.getTime() + Math.random()) + parseFloat(config.shift),
                     "time": data.getTime()
                 })
             },
