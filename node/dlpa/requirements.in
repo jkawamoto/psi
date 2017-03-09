@@ -19,3 +19,4 @@
 numpy
 grpcio-tools
 PyCrypto
+psi-dlpa
