@@ -1,4 +1,4 @@
-#Distributed Laplace Perturbation Algorithm
+# Distributed Laplace Perturbation Algorithm
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 
 A Node-RED node which provides Distributed Laplace Perturbation Algorithm (DLPA)
@@ -24,6 +24,10 @@ $ npm run deps
 Note that, before running the above command, you need to install python3
 and pip command.
 
+Additionaly, if you install [gmpy2](https://pypi.python.org/pypi/gmpy2),
+computation time will be reduced.
+To install gmpy2 in mac, you also need to install mpc, mpfr, and libmp.
+Those three packages are available in [Homebrew](https://brew.sh/).
 
 ## License
 This software is released under The GNU General Public License Version 3,

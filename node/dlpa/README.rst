@@ -29,6 +29,12 @@ To install those required packages, run
 Note that, before running the above command, you need to install python3
 and pip command.
 
+Additionaly, if you install
+`gmpy2 <https://pypi.python.org/pypi/gmpy2>`__, computation time will be
+reduced. To install gmpy2 in mac, you also need to install mpc, mpfr,
+and libmp. Those three packages are available in
+`Homebrew <https://brew.sh/>`__.
+
 License
 -------
 
