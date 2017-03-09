@@ -43,7 +43,7 @@ def load_requires_from_file(filepath):
 
 setup(
     name="psi-dlpa",
-    version="0.3.0",
+    version="0.3.1",
     author="Junpei Kawamoto",
     author_email="kawamoto.junpei@gmail.com",
     description="A Node-RED node for DLPA algorithm of PASTE",

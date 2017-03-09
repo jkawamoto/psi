@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-psi-dlpa",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Distributed LPA node for Psi project",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "repository": {
