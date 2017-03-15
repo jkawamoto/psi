@@ -1,8 +1,10 @@
 # &#x03C8;: Privacy-Preserving Stream Integration
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 [![CircleCI](https://circleci.com/gh/jkawamoto/psi/tree/master.svg?style=svg)](https://circleci.com/gh/jkawamoto/psi/tree/master)
+[![wercker status](https://app.wercker.com/status/962f3c76a5c374e4195650731a3e52d1/s/master "wercker status")](https://app.wercker.com/project/byKey/962f3c76a5c374e4195650731a3e52d1)
 [![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Fpsi--node--red-blue.svg)](https://hub.docker.com/r/jkawamoto/psi-node-red/)
 [![MicroBadger](https://images.microbadger.com/badges/image/jkawamoto/psi-node-red.svg)](https://microbadger.com/images/jkawamoto/psi-node-red)
+[![Release](https://img.shields.io/badge/release-0.5.0-brightgreen.svg)](https://github.com/jkawamoto/psi/releases/tag/v0.5.0)
 
 This project implements a privacy-preserving stream integration algorithm on [Node-RED](http://nodered.org/).
 
