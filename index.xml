@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ψ: Privacy-Preserving Stream Integration</title>
+    <link>https://jkawamoto.github.io/psi/index.xml</link>
+    <description>Recent content on ψ: Privacy-Preserving Stream Integration</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 14 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://jkawamoto.github.io/psi/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Privacy-Preserving Stream Integration</title>
+      <link>https://jkawamoto.github.io/psi/</link>
+      <pubDate>Tue, 14 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://jkawamoto.github.io/psi/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://www.gnu.org/copyleft/gpl.html&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/license-GPLv3-blue.svg&#34; alt=&#34;GPLv3&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://circleci.com/gh/jkawamoto/psi/tree/master&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/jkawamoto/psi/tree/master.svg?style=svg&#34; alt=&#34;CircleCI&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://app.wercker.com/project/byKey/962f3c76a5c374e4195650731a3e52d1&#34;&gt;&lt;img src=&#34;https://app.wercker.com/status/962f3c76a5c374e4195650731a3e52d1/s/master&#34; alt=&#34;wercker status&#34; title=&#34;wercker status&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://github.com/jkawamoto/psi/releases/tag/v0.5.0&#34;&gt;&lt;img src=&#34;https://img.shields.io/badge/release-0.5.0-brightgreen.svg&#34; alt=&#34;Release&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This software is a set of Node-RED nodes which provides a privacy preserving
+stream integration algorithm.
+There are several sensors in several places and you want to integrate data from
+such sensors in a cloud server; but you, at the same time, need to consider
+privacy of those sensor data.&lt;/p&gt;
+
+&lt;p&gt;For example, you put sensors in each room of customers&amp;rsquo; houses and want to get
+power usage of each room in order to analyze usage patterns and provide a
+useful service such as consulting to reduce electric bill.
+However, collecting power usage can reveal customers&amp;rsquo; private life style;
+you thereby have to treat that information privately.&lt;/p&gt;
+
+&lt;p&gt;This software provides a solution for that situation.
+It assumes two integration steps: at first integrating sensor data in a trusted
+network before sending to a cloud server, then integrating sensor data in the
+cloud server.&lt;/p&gt;
+
+&lt;p&gt;The following figure shows an example of this situation: there are two trusted
+networks, each of them has seven sensors and one integrator, and a cloud server
+receives data from those two integrators.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/usecase.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;In this software, those integrators and the cloud server run a Node-RED server.
+In each integrator, the Node-RED server has nodes receiving data from sensors,
+applying privacy protection to those data, and sending them to the cloud server.
+In the cloud server, the Node-RED server has nodes receiving data from
+integrators and merging data.&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&#34;./nodes/&#34;&gt;Node-RED nodes&lt;/a&gt; page for information about each node.&lt;/p&gt;
+
+&lt;h2 id=&#34;about-node-red&#34;&gt;About Node-RED&lt;/h2&gt;
+
+&lt;p&gt;Node-RED is a visual tool for wiring the Internet of Things.
+You can design data flow using its graphical flow editor, and deploy your
+application handling data from several sources.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;img/flow-editor.png&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;Visit its &lt;a href=&#34;https://nodered.org/&#34;&gt;web site&lt;/a&gt; to know usage of the flow editor
+and the way to deploy your application on Node-RED.&lt;/p&gt;
+
+&lt;h2 id=&#34;quick-start&#34;&gt;Quick Start&lt;/h2&gt;
+
+&lt;p&gt;There are two ways to start a Node-RED server which includes Node-RED nodes
+provided by this software: compiling source code on your computer and run,
+and using a docker container.&lt;/p&gt;
+
+&lt;h3 id=&#34;build-and-run-by-node-js&#34;&gt;Build and Run by Node.js&lt;/h3&gt;
+
+&lt;p&gt;Prepare &lt;a href=&#34;https://nodejs.org/&#34;&gt;Node.js&lt;/a&gt;, &lt;a href=&#34;https://www.python.org/&#34;&gt;Python 3&lt;/a&gt;, and
+&lt;a href=&#34;https://pip.pypa.io/en/stable/&#34;&gt;pip&lt;/a&gt;; then install dependencies and build:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# Install packages used to build.
+$ npm install --only=dev
+
+# Build related packages.
+$ npm run build
+
+# Install dependencies.
+$ npm install --only=prod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;after that, you can run Node-RED including privacy preserving algorithms:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ npm start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open &lt;a href=&#34;http://127.0.0.1:1880/&#34;&gt;http://127.0.0.1:1880/&lt;/a&gt; with your web browser to access Node-RED&amp;rsquo;s flow
+editor.&lt;/p&gt;
+
+&lt;h3 id=&#34;run-in-a-docker-container&#34;&gt;Run in a docker container&lt;/h3&gt;
+
+&lt;p&gt;A &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt; image, &lt;code&gt;jkawamoto/psi-node-red&lt;/code&gt;, is
+published in &lt;a href=&#34;https://hub.docker.com/&#34;&gt;Docker Hub&lt;/a&gt;, to run Node-RED in a
+container.&lt;/p&gt;
+
+&lt;p&gt;To start a Node-RED service listening port 1880, run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker run -d --name node-red -p 1880:1880 jkawamoto/psi-node-red
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After Node-RED starts, open &lt;a href=&#34;http://127.0.0.1:1880/&#34;&gt;http://127.0.0.1:1880/&lt;/a&gt; with your web browser to
+access Node-RED&amp;rsquo;s flow editor.&lt;/p&gt;
+
+&lt;p&gt;You can also build the image, &lt;code&gt;jkawamoto/psi-node-red&lt;/code&gt;, by your self:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ docker build -t psi-node-red -f dockerfile/node-red/Dockerfile .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;publications&#34;&gt;Publications&lt;/h2&gt;
+
+&lt;p&gt;The algorithm this software provides is based on two papers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/vibhor-rastogi-6b680152&#34;&gt;Vibhor Rastogi&lt;/a&gt;
+and &lt;a href=&#34;https://www.microsoft.com/en-us/research/people/sumann/&#34;&gt;Suman Nath&lt;/a&gt;
+in &amp;ldquo;&lt;a href=&#34;http://dl.acm.org/citation.cfm?id=1807247&#34;&gt;Differentially Private Aggregation of Distributed Time-Series with
+Transformation and Encryption&lt;/a&gt;,&amp;rdquo;
+published in &lt;a href=&#34;http://www.sigmod2010.org/index.shtml&#34;&gt;SIGMOD 2010&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jkawamoto.info&#34;&gt;Junpei Kawamoto&lt;/a&gt;, &amp;ldquo;&lt;a href=&#34;http://ieeexplore.ieee.org/document/7427088/&#34;&gt;An Implementation of Privacy Preserving Stream Integration System&lt;/a&gt;,&amp;rdquo; published in &lt;a href=&#34;http://2016.icoin.org/main/&#34;&gt;ICOIN 2016&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Please consider to site those papers if you will publish articles using this
+application.&lt;/p&gt;
+
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+
+&lt;p&gt;This software is released under the GNU General Public License version 3,
+see &lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/LICENSE&#34;&gt;LICENSE&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Node-RED nodes</title>
+      <link>https://jkawamoto.github.io/psi/nodes/</link>
+      <pubDate>Tue, 14 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://jkawamoto.github.io/psi/nodes/</guid>
+      <description>&lt;p&gt;This software includes seven Node-RED nodes; a Node-RED node provides some of functions such as receiving data from a data source, modifying data, and
+sending data to other servers.&lt;/p&gt;
+
+&lt;p&gt;The following is a brief description of Node-RED nodes this software provides:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/dft/README.md&#34;&gt;dft&lt;/a&gt;:
+providing top-k Discrete Fourier Transformation,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/dlpa/README.md&#34;&gt;dlpa&lt;/a&gt;: providing Distributed Laplace Perturbation Algorithm
+(DLPA) which is one of the main algorithm of PASTE.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/fluentd-parser/README.md&#34;&gt;fluentd-parser&lt;/a&gt;:
+parsing messages from &lt;a href=&#34;http://www.fluentd.org/&#34;&gt;Fluentd&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/fplug-splitter/README.md&#34;&gt;fplug-splitter&lt;/a&gt;:
+splitting messages from
+&lt;a href=&#34;https://github.com/jkawamoto/fplug-logger&#34;&gt;fplug-logger&lt;/a&gt; into four messages
+so that each message has only one sensor value,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/guard/README.md&#34;&gt;guard&lt;/a&gt;:
+waiting to send message until it receives messages from all topics,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/local-sum/README.md&#34;&gt;local-sum&lt;/a&gt;:
+aggregating topics and computing summation of those values,&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/node/rgen/README.md&#34;&gt;rgen&lt;/a&gt;:
+generating a random value every 10 second to test other nodes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most of the above nodes are available in &lt;a href=&#34;https://www.npmjs.com/&#34;&gt;npm&lt;/a&gt;.
+To install them, see each &lt;code&gt;README.md&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
