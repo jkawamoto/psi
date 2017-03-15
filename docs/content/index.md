@@ -1,9 +1,15 @@
 ---
 title: "Privacy-Preserving Stream Integration"
 type: homepage
+menu:
+  main:
+    Name: Top
+weight: 1
 date: 2017-03-14
 lastmod: 2017-03-14
-description: Crawling comments from Youtube.
+description: >-
+  This software is a set of Node-RED nodes which provides a privacy preserving
+  stream integration algorithm.
 ---
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 
@@ -11,6 +17,16 @@ This software is a set of Node-RED nodes which provides a privacy preserving
 stream integration algorithm.
 
 ## Quick Start
+### About Node-RED
+Node-RED is a visual tool for wiring the Internet of Things.
+You can design data flow using its graphical flow editor, and deploy your
+application handling data from several sources.
+
+<img src="img/flow-editor.png"/>
+
+Visit its [web site](https://nodered.org/) to know usage of the flow editor
+and the way to deploy your application on Node-RED.
+
 ### Build and Run by Node.js
 Prepare [Node.js](https://nodejs.org/), [Python 3](https://www.python.org/), and
 [pip](https://pip.pypa.io/en/stable/); then install dependencies and build:
