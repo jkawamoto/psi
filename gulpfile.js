@@ -62,7 +62,7 @@ gulp.task("build", ["install"], (done) => {
 });
 
 // Run sub projects' tests.
-gulp.task("test", (done) => {
+gulp.task("test", ["build"], (done) => {
 
     glob("./node/*/package.json", (err, files) => {
 

@@ -13,7 +13,7 @@ build:
         js: false
 deploy:
   steps:
-    - lukevivier/gh-pages:
+    - jkawamoto/gh-pages:
         token: $GIT_TOKEN
         basedir: docs/public
         msg: Update documentation [skip ci]
