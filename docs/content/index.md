@@ -16,11 +16,40 @@ description: >-
 [![wercker status](https://app.wercker.com/status/962f3c76a5c374e4195650731a3e52d1/s/master "wercker status")](https://app.wercker.com/project/byKey/962f3c76a5c374e4195650731a3e52d1)
 [![Release](https://img.shields.io/badge/release-0.5.0-brightgreen.svg)](https://github.com/jkawamoto/psi/releases/tag/v0.5.0)
 
+## Introduction
 This software is a set of Node-RED nodes which provides a privacy preserving
 stream integration algorithm.
+There are several sensors in several places and you want to integrate data from
+such sensors in a cloud server; but you, at the same time, need to consider
+privacy of those sensor data.
 
-## Quick Start
-### About Node-RED
+For example, you put sensors in each room of customers' houses and want to get
+power usage of each room in order to analyze usage patterns and provide a
+useful service such as consulting to reduce electric bill.
+However, collecting power usage can reveal customers' private life style;
+you thereby have to treat that information privately.
+
+This software provides a solution for that situation.
+It assumes two integration steps: at first integrating sensor data in a trusted
+network before sending to a cloud server, then integrating sensor data in the
+cloud server.
+
+The following figure shows an example of this situation: there are two trusted
+networks, each of them has seven sensors and one integrator, and a cloud server
+receives data from those two integrators.
+
+<img src="img/usecase.png"/>
+
+In this software, those integrators and the cloud server run a Node-RED server.
+In each integrator, the Node-RED server has nodes receiving data from sensors,
+applying privacy protection to those data, and sending them to the cloud server.
+In the cloud server, the Node-RED server has nodes receiving data from
+integrators and merging data.
+
+See [Node-RED nodes](./nodes/) page for information about each node.
+
+
+## About Node-RED
 Node-RED is a visual tool for wiring the Internet of Things.
 You can design data flow using its graphical flow editor, and deploy your
 application handling data from several sources.
@@ -29,6 +58,11 @@ application handling data from several sources.
 
 Visit its [web site](https://nodered.org/) to know usage of the flow editor
 and the way to deploy your application on Node-RED.
+
+## Quick Start
+There are two ways to start a Node-RED server which includes Node-RED nodes
+provided by this software: compiling source code on your computer and run,
+and using a docker container.
 
 ### Build and Run by Node.js
 Prepare [Node.js](https://nodejs.org/), [Python 3](https://www.python.org/), and
