@@ -13,7 +13,7 @@ build:
         js: false
 deploy:
   steps:
-    - jkawamoto/gh-pages:
+    - jkawamoto/ghp-import:
         token: $GIT_TOKEN
         basedir: docs/public
         msg: Update documentation [skip ci]
