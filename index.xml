@@ -143,7 +143,11 @@ see &lt;a href=&#34;https://github.com/jkawamoto/psi/blob/master/LICENSE&#34;&gt
       <pubDate>Tue, 14 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://jkawamoto.github.io/psi/nodes/</guid>
-      <description>&lt;p&gt;This software includes seven Node-RED nodes; a Node-RED node provides some of functions such as receiving data from a data source, modifying data, and
+      <description>
+
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This software includes seven Node-RED nodes; a Node-RED node provides some of functions such as receiving data from a data source, modifying data, and
 sending data to other servers.&lt;/p&gt;
 
 &lt;p&gt;The following is a brief description of Node-RED nodes this software provides:&lt;/p&gt;
