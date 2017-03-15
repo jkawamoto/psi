@@ -1,0 +1,38 @@
+baseurl = "https://jkawamoto.github.io/psi/"
+languageCode = "en-us"
+metadataformat = "yaml"
+title = "ψ: Privacy-Preserving Stream Integration"
+theme = "hugo-alabaster-theme"
+
+disqusShortname = ""
+googleAnalytics = "UA-82315630-1"
+
+[params]
+	name = "ψ"
+	description = "Privacy-Preserving Stream Integration on Node-RED"
+
+	github_user   = "jkawamoto"
+	github_repo   = "psi"
+	github_banner = true
+
+  addthis = "ra-57f529147128b1fb"
+
+	custom_css = []
+	custom_js  = []
+
+	highlightjs = "css/highlight.css"
+	favicon = "favicon.ico"
+
+[params.sidebar]
+	logo = "favicon.ico"
+
+	github_button  = true
+	travis_button  = false
+	codecov_button = false
+	gratipay = "~jkawamoto"
+
+	show_relations = false
+
+[params.footer]
+	copyright = "[Junpei Kawamoto](https://www.jkawamoto.info/)"
+	show_powered_by = true
