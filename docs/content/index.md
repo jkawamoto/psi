@@ -70,4 +70,4 @@ application.
 
 ## License
 This software is released under the GNU General Public License version 3,
-see [LICENSE](LICENSE).
+see [LICENSE](https://github.com/jkawamoto/psi/blob/master/LICENSE).
