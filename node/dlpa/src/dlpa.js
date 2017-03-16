@@ -174,7 +174,7 @@ module.exports = (RED) => {
             "--port", config.port,
             "--clients", config.nclient,
             "--key-length", "128",
-            "--span", config.span ? config.span : "300"
+            "--time-span", config.span ? config.span : "300"
         ], {
             cwd: __dirname,
         });
