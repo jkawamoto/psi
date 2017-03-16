@@ -13,13 +13,13 @@
   ],
   "node-red": {
     "nodes": {
-      "json-log-parser": "lib/fplug-splitter.js"
+      "fplug-splitter": "lib/fplug-splitter.js"
     }
   },
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "npm run build && npm test",
     "build": "pug lib/fplug-splitter.pug",
-    "test": ":",
+    "test": "mocha",
     "check-update": "ncu -u"
   },
   "files": [
@@ -32,8 +32,10 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
     "jstransformer-babel": "^2.1.0",
     "jstransformer-markdown-it": "^2.0.0",
+    "mocha": "^3.2.0",
     "npm-check-updates": "^2.10.3",
     "pug-cli": "^1.0.0-alpha6"
   }

@@ -27,15 +27,15 @@ function create_message(msg, attr) {
 
 module.exports = (RED) => {
 
-    RED.nodes.registerType("fplug-splitter", (config) => {
+    RED.nodes.registerType("fplug-splitter", function(config) {
 
         RED.nodes.createNode(this, config);
         this.on("input", (msg) => {
             this.send([
                 create_message(msg, "illuminance"),
-                create_message(mgs, "temperature"),
-                create_message(mgs, "power"),
-                create_message(mgs, "humidity")
+                create_message(msg, "temperature"),
+                create_message(msg, "power"),
+                create_message(msg, "humidity")
             ]);
         });
 
