@@ -1,5 +1,5 @@
 //
-// local-sum.coffee
+// local-sum.js
 //
 // Copyright (c) 2016-2017 Junpei Kawamoto
 //
@@ -17,7 +17,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 module.exports = (RED) => {
 
-    RED.nodes.registerType("local-sum", (config) => {
+    RED.nodes.registerType("local-sum", function(config) {
 
         RED.nodes.createNode(this, config);
         this.on("input", (msg) => {
