@@ -22,6 +22,7 @@
   },
   "files": [
     "lib",
+    "lib/local-sum.html",
     "LICENSE",
     "package.json",
     "README.md"
