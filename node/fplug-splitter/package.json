@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-fplug-splitter",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "NodeRED node to split flow from FPlug logger.",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "homepage": "https://github.com/jkawamoto/psi/tree/master/node/fplug-splitter/",
