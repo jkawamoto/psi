@@ -16,6 +16,7 @@
     }
   },
   "scripts": {
+    "prepublish": "npm run build && npm test",
     "build": "pug lib/local-sum.pug",
     "test": "mocha",
     "check-update": "ncu -u"
