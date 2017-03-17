@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-psi-dft",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Discrete Fourier Transformation for Psi project",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "repository": {

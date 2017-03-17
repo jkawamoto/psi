@@ -43,7 +43,7 @@ def load_requires_from_file(filepath):
 
 setup(
     name="psi-dft",
-    version="0.1.0",
+    version="0.2.0",
     author="Junpei Kawamoto",
     author_email="kawamoto.junpei@gmail.com",
     description="Discrete Fourier Transformation for Psi project",
