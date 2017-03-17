@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-fluentd-parser",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "NodeRED node for parsing logs from Fluentd.",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "homepage": "https://github.com/jkawamoto/psi/tree/master/node/fluentd-parser/",
