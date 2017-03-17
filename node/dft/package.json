@@ -16,31 +16,26 @@
     }
   },
   "scripts": {
+    "prepublish": "npm run build && npm test",
+    "postinstall": "pip install -r requirements.txt",
+    "build": "pug lib/dft.pug",
     "test": "python setup.py test",
-    "build": "gulp build",
     "pandoc": "pandoc --from markdown --to rst --out README.rst README.md",
-    "check-update": "ncu -u"
+    "check-update": "ncu -u -a"
   },
   "files": [
     "lib",
-    "src",
-    "gulpfile.js",
+    "lib/dft.html",
     "COPYING",
     "package.json",
     "README.md"
   ],
   "license": "GPL-3.0",
   "devDependencies": {
-    "babel-preset-es2015": "^6.22.0",
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-pug": "^3.2.0",
-    "gulp-uglify": "^2.0.1",
+    "babel-preset-es2015": "^6.24.0",
     "jstransformer-babel": "^2.1.0",
     "jstransformer-markdown-it": "^2.0.0",
-    "npm-check-updates": "^2.10.2"
-  },
-  "private": true
+    "npm-check-updates": "^2.10.3",
+    "pug-cli": "^1.0.0-alpha6"
+  }
 }
