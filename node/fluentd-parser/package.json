@@ -19,7 +19,7 @@
   "scripts": {
     "prepublish": "npm run build && npm test",
     "build": "pug lib/fluentd-parser.pug",
-    "test": ":",
+    "test": "mocha",
     "check-update": "ncu -u"
   },
   "files": [
