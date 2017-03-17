@@ -19,7 +19,7 @@
     "prepublish": "npm run build && npm test",
     "postinstall": "pip install -r requirements.txt",
     "build": "pug lib/dft.pug",
-    "test": "python setup.py test",
+    "test": "mocha tests && python setup.py test",
     "pandoc": "pandoc --from markdown --to rst --out README.rst README.md",
     "check-update": "ncu -u -a"
   },
@@ -33,8 +33,10 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.0",
+    "chai": "^3.5.0",
     "jstransformer-babel": "^2.1.0",
     "jstransformer-markdown-it": "^2.0.0",
+    "mocha": "^3.2.0",
     "npm-check-updates": "^2.10.3",
     "pug-cli": "^1.0.0-alpha6"
   }
