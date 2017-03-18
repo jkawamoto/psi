@@ -28,7 +28,8 @@
     "lib/dft.html",
     "COPYING",
     "package.json",
-    "README.md"
+    "README.md",
+    "requirements.txt"
   ],
   "license": "GPL-3.0",
   "devDependencies": {
