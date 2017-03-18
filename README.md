@@ -4,7 +4,7 @@
 [![wercker status](https://app.wercker.com/status/962f3c76a5c374e4195650731a3e52d1/s/master "wercker status")](https://app.wercker.com/project/byKey/962f3c76a5c374e4195650731a3e52d1)
 [![Dockerhub](https://img.shields.io/badge/dockerhub-jkawamoto%2Fpsi--node--red-blue.svg)](https://hub.docker.com/r/jkawamoto/psi-node-red/)
 [![MicroBadger](https://images.microbadger.com/badges/image/jkawamoto/psi-node-red.svg)](https://microbadger.com/images/jkawamoto/psi-node-red)
-[![Release](https://img.shields.io/badge/release-0.5.0-brightgreen.svg)](https://github.com/jkawamoto/psi/releases/tag/v0.5.0)
+[![Release](https://img.shields.io/badge/release-0.6.0-brightgreen.svg)](https://github.com/jkawamoto/psi/releases/tag/v0.6.0)
 
 This project implements a privacy-preserving stream integration algorithm on [Node-RED](http://nodered.org/).
 
