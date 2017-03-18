@@ -1,6 +1,6 @@
 {
   "name": "psi-node-red",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Privacy-Preserving Stream Integration",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "main": "index.js",
