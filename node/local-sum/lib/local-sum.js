@@ -1,5 +1,5 @@
 //
-// fluentd-parser.js
+// local-sum.js
 //
 // Copyright (c) 2016-2017 Junpei Kawamoto
 //
@@ -17,33 +17,16 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 module.exports = (RED) => {
 
-    RED.nodes.registerType("fluentd-parser", (config) => {
+    RED.nodes.registerType("local-sum", function(config) {
 
         RED.nodes.createNode(this, config);
-
         this.on("input", (msg) => {
-            // Set topic from container name.
-            if (msg.payload.container_name) {
-                msg.topic = msg.payload.container_name.substring(1);
-            }
-
-            // Parse log property as a JSON object.
-            let log;
-            try {
-                log = JSON.parse(msg.payload.log);
-                for (key in log) {
-                    if (log[key] === null) {
-                        log[key] = 0;
-                    }
-                }
-            } catch (e) {
-                this.warn(e.message, msg);
-                log = msg.payload.log;
-            }
-            msg.payload = log;
+            msg.payload = msg.payload.reduce((prev, cur) => {
+                return prev + cur;
+            });
             this.send(msg);
         });
 
     });
 
-}
+};

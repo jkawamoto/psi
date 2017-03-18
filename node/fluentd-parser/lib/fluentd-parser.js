@@ -1,5 +1,5 @@
 //
-// fplug-log-splitter.js
+// fluentd-parser.js
 //
 // Copyright (c) 2016-2017 Junpei Kawamoto
 //
@@ -15,30 +15,35 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-function create_message(msg, attr) {
-    return {
-        topic: `${msg.topic}-${attr}`,
-        payload: {
-            time: msg.payload.time,
-            value: msg.payload[attr]
-        }
-    };
-}
-
 module.exports = (RED) => {
 
-    RED.nodes.registerType("fplug-splitter", (config) => {
+    RED.nodes.registerType("fluentd-parser", function(config) {
 
         RED.nodes.createNode(this, config);
+
         this.on("input", (msg) => {
-            this.send([
-                create_message(msg, "illuminance"),
-                create_message(mgs, "temperature"),
-                create_message(mgs, "power"),
-                create_message(mgs, "humidity")
-            ]);
+            // Set topic from container name.
+            if (msg.payload.container_name) {
+                msg.topic = msg.payload.container_name.substring(1);
+            }
+
+            // Parse log property as a JSON object.
+            let log;
+            try {
+                log = JSON.parse(msg.payload.log);
+                for (key in log) {
+                    if (log[key] === null) {
+                        log[key] = 0;
+                    }
+                }
+            } catch (e) {
+                this.warn(e.message, msg);
+                log = msg.payload.log;
+            }
+            msg.payload = log;
+            this.send(msg);
         });
 
     });
 
-};
+}

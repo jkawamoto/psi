@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-fplug-splitter",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "NodeRED node to split flow from FPlug logger.",
   "author": "Junpei Kawamoto <junpei.kawamoto@acm.org> (https://www.jkawamoto.info/)",
   "homepage": "https://github.com/jkawamoto/psi/tree/master/node/fplug-splitter/",
@@ -13,18 +13,18 @@
   ],
   "node-red": {
     "nodes": {
-      "json-log-parser": "lib/fplug-splitter.js"
+      "fplug-splitter": "lib/fplug-splitter.js"
     }
   },
   "scripts": {
-    "build": "gulp prod build",
-    "test": ":",
+    "prepublish": "npm run build && npm test",
+    "build": "pug lib/fplug-splitter.pug",
+    "test": "mocha",
     "check-update": "ncu -u"
   },
   "files": [
     "lib",
-    "src",
-    "gulpfile.js",
+    "lib/fplug-splitter.html",
     "LICENSE",
     "package.json",
     "README.md"
@@ -32,14 +32,11 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-preset-es2015": "^6.22.0",
-    "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-pug": "^3.2.0",
-    "gulp-uglify": "^2.0.1",
+    "chai": "^3.5.0",
     "jstransformer-babel": "^2.1.0",
     "jstransformer-markdown-it": "^2.0.0",
-    "npm-check-updates": "^2.10.3"
+    "mocha": "^3.2.0",
+    "npm-check-updates": "^2.10.3",
+    "pug-cli": "^1.0.0-alpha6"
   }
 }

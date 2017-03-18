@@ -9,12 +9,10 @@
   },
   "scripts": {
     "start": "node-red",
-    "test": "gulp test",
-    "prebuild": "npm run deps",
-    "build": "gulp build",
     "restart": "gulp update && npm start",
-    "gulp": "gulp",
-    "deps": "pip install -r requirements.txt",
+    "test": "gulp test",
+    "postinstall": "pip install -r requirements.txt",
+    "build": "gulp build",
     "check-update": "ncu -u",
     "check-update:all": "gulp check-update",
     "build:docker": "docker build -t jkawamoto/psi-node-red -f dockerfile/node-red/Dockerfile ."
@@ -42,6 +40,5 @@
     "node-red-contrib-psi-dlpa": "file:node/dlpa",
     "node-red-contrib-psi-rgen": "file:node/rgen"
   },
-  "license": "GPL-3.0",
-  "private": true
+  "license": "GPL-3.0"
 }

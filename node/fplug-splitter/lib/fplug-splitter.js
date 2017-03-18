@@ -1,5 +1,5 @@
 //
-// local-sum.coffee
+// fplug-log-splitter.js
 //
 // Copyright (c) 2016-2017 Junpei Kawamoto
 //
@@ -15,16 +15,28 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+function create_message(msg, attr) {
+    return {
+        topic: `${msg.topic}-${attr}`,
+        payload: {
+            time: msg.payload.time,
+            value: msg.payload[attr]
+        }
+    };
+}
+
 module.exports = (RED) => {
 
-    RED.nodes.registerType("local-sum", (config) => {
+    RED.nodes.registerType("fplug-splitter", function(config) {
 
         RED.nodes.createNode(this, config);
         this.on("input", (msg) => {
-            msg.payload = msg.payload.reduce((prev, cur) => {
-                return prev + cur;
-            });
-            this.send(msg);
+            this.send([
+                create_message(msg, "illuminance"),
+                create_message(msg, "temperature"),
+                create_message(msg, "power"),
+                create_message(msg, "humidity")
+            ]);
         });
 
     });
