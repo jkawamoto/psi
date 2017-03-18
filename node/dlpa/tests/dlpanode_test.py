@@ -25,7 +25,7 @@ import unittest
 
 import grpc
 
-sys.path.append("./src/")
+sys.path.append("./lib/")
 from dlpa import DLPAServicer
 from dlpa import server as dlpa_server
 from dlpanode import DLPAClientServicer

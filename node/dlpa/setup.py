@@ -19,9 +19,9 @@
 """Package information about a distributed LPA algorithm.
 """
 from os import path
-from setuptools import setup, find_packages
 import sys
-sys.path.append("./src/")
+from setuptools import setup, find_packages
+sys.path.append("./lib/")
 
 
 def read(fname):
@@ -37,7 +37,7 @@ def load_requires_from_file(filepath):
     Returns:
       a list of package names.
     """
-    with open(filepath) as fp:
+    with open(filepath) as fp:  # pylint: disable=invalid-name
         return [pkg_name.strip() for pkg_name in fp.readlines()]
 
 
@@ -56,7 +56,6 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "dlpa-server = dlpa.server:main",
             "dlpanode-server = dlpanode.server:main",
             "dlpa-test = server:main"
         ]

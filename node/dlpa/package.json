@@ -16,37 +16,31 @@
     }
   },
   "scripts": {
+    "prepublish": "npm run build && npm test",
     "test": "python setup.py test",
-    "deps": "pip install -r requirements.txt",
-    "build": "gulp build",
-    "gulp": "gulp",
+    "postinstall": "pip install -r requirements.txt",
+    "build": "npm run build:pug && npm run build:proto",
+    "build:pug": "pug lib/dlpa.pug",
+    "build:proto": "python -m grpc_tools.protoc -Ilib --python_out=lib --grpc_python_out=lib lib/dlpanode/dlpanode.proto",
     "docs": "cd docs && make html",
     "pandoc": "pandoc --from markdown --to rst --out README.rst README.md",
-    "check-update": "ncu -u"
+    "check-update": "ncu -u -a"
   },
   "files": [
     "lib",
-    "src",
-    "gulpfile.js",
+    "lib/dlpa.html",
     "COPYING",
     "package.json",
     "README.md"
   ],
   "license": "GPL-3.0",
   "devDependencies": {
-    "babel-preset-es2015": "^6.22.0",
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-exec": "^2.1.3",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-pug": "^3.2.0",
-    "gulp-uglify": "^2.0.1",
+    "babel-preset-es2015": "^6.24.0",
     "jstransformer-babel": "^2.1.0",
     "jstransformer-markdown-it": "^2.0.0",
-    "npm-check-updates": "^2.10.2"
+    "npm-check-updates": "^2.10.3",
+    "pug-cli": "^1.0.0-alpha6"
   },
-  "private": true,
   "dependencies": {
     "grpc": "^1.1.2"
   }
