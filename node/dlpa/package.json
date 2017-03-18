@@ -18,7 +18,7 @@
   "scripts": {
     "prepublish": "npm run build && npm test",
     "test": "python setup.py test",
-    "postinstall": "pip install -r requirements.txt",
+    "prebuild": "pip install -r requirements.txt",
     "build": "npm run build:pug && npm run build:proto",
     "build:pug": "pug lib/dlpa.pug",
     "build:proto": "python -m grpc_tools.protoc -Ilib --python_out=lib --grpc_python_out=lib lib/dlpanode/dlpanode.proto",
