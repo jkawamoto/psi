@@ -17,16 +17,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """Unit test for idft module.
 """
-# pylint: disable=import-error
+# pylint: disable=import-error,invalid-name
 import json
 from io import StringIO
 from os import path
 import sys
 import unittest
 
-sys.path.append("./src/")
-import dft
-import idft
+sys.path.append("./lib")
+import dft  # pylint:disable=wrong-import-position
+import idft  # pylint:disable=wrong-import-position
 
 
 class TestDecode(unittest.TestCase):
