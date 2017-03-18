@@ -121,6 +121,12 @@ published in [SIGMOD 2010](http://www.sigmod2010.org/index.shtml),
 Please consider to site those papers if you will publish articles using this
 application.
 
+## Acknowledgement
+This work is partly supported by
+[Artificial Intelligence Research Promotion Foundation (AIF)](http://www.airpf.or.jp/),
+and Grant-in-Aid for Young Scientists (B) (26730065),
+[Japan Society for the Promotion of Science (JSPS)](https://www.jsps.go.jp/english/index.html).
+
 ## License
 This software is released under the GNU General Public License version 3,
 see [LICENSE](https://github.com/jkawamoto/psi/blob/master/LICENSE).
