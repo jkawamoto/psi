@@ -22,6 +22,8 @@ googleAnalytics = "UA-82315630-1"
 
 	highlightjs = "css/highlight.css"
 	favicon = "favicon.ico"
+  twitter = "@jkawamoto"
+  image = "img/psi.png"
 
 [params.sidebar]
 	logo = "favicon.ico"
