@@ -11,10 +11,10 @@ description: >-
   This software is a set of Node-RED nodes which provides a privacy preserving
   stream integration algorithm.
 ---
-[![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
-[![CircleCI](https://circleci.com/gh/jkawamoto/psi/tree/master.svg?style=svg)](https://circleci.com/gh/jkawamoto/psi/tree/master)
-[![wercker status](https://app.wercker.com/status/962f3c76a5c374e4195650731a3e52d1/s/master "wercker status")](https://app.wercker.com/project/byKey/962f3c76a5c374e4195650731a3e52d1)
-[![Release](https://img.shields.io/badge/release-0.6.1-brightgreen.svg)](https://github.com/jkawamoto/psi/releases/tag/v0.6.1)
+[{{%img "https://img.shields.io/badge/license-GPLv3-blue.svg" "GPLv3" 92 20 %}}](https://www.gnu.org/copyleft/gpl.html)
+[{{%img "https://circleci.com/gh/jkawamoto/psi/tree/master.svg?style=svg" "CircleCI" 66 18 %}}](https://circleci.com/gh/jkawamoto/psi/tree/master)
+[{{%img "https://app.wercker.com/status/962f3c76a5c374e4195650731a3e52d1/s/master" "wercker status" 90 20 %}}](https://app.wercker.com/project/byKey/962f3c76a5c374e4195650731a3e52d1)
+[{{%img "https://img.shields.io/badge/release-0.6.1-brightgreen.svg" "Release" 88 20 %}}](https://github.com/jkawamoto/psi/releases/tag/v0.6.1)
 
 ## Introduction
 This software is a set of Node-RED nodes which provides a privacy preserving
@@ -38,7 +38,7 @@ The following figure shows an example of this situation: there are two trusted
 networks, each of them has seven sensors and one integrator, and a cloud server
 receives data from those two integrators.
 
-<img src="img/usecase.png"/>
+{{%img "img/usecase.png" "Usecase" 707 635 true %}}
 
 In this software, those integrators and the cloud server run a Node-RED server.
 In each integrator, the Node-RED server has nodes receiving data from sensors,
@@ -54,7 +54,7 @@ Node-RED is a visual tool for wiring the Internet of Things.
 You can design data flow using its graphical flow editor, and deploy your
 application handling data from several sources.
 
-<img src="img/flow-editor.png"/>
+{{%img "img/flow-editor.png" "Flow editor" 494 328 true %}}
 
 Visit its [web site](https://nodered.org/) to know usage of the flow editor
 and the way to deploy your application on Node-RED.
